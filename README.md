@@ -9,7 +9,7 @@ and <br>
 
 <br>
 
-이 프로젝트는 https://github.com/yangjae-ai-school/Individual-Project 에서 깨끗한 저장소로 옮겨졌습니다. <br>
+이 프로젝트는 https://github.com/yangjae-ai-school/Individual-Project 에서 옮겨진 것. <br>
 다시는 깃에 데이터셋을 push 하는 일을 하지 않겠어.. 저장소가 완전히 고장나버렸기 때문에 부득이 이사하게 되었습니다. <br>
 
 
