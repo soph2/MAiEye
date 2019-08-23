@@ -7,10 +7,16 @@ and <br>
 **Eye?** <br>
 
 
+
 <br>
 
-이 프로젝트는 https://github.com/yangjae-ai-school/Individual-Project 에서 옮겨진 것. <br>
-다시는 깃에 데이터셋을 push 하는 일을 하지 않겠어.. 저장소가 완전히 고장나버렸기 때문에 부득이 이사하게 되었습니다. <br>
+이 프로젝트는 https://github.com/yangjae-ai-school/Individual-Project 에서 옮겨진 것으로, <br>
+저장소가 완전히 꼬여 고장나버렸기 때문에 부득이 이사하게 되었음을 알립니다. <br>
+
+
+<br>
+<br>
+<br>
 
 
 ## Folder - Study
@@ -114,6 +120,7 @@ and <br>
 > - 일단 오류 하나 잡음. 소스를 까보니, pascal voc 형식도 조금씩 다 성격이 달랐다는 걸 알게 되었음.
 > - 그리고 다음 오류가 발생. 소스를 까보니, pascal voc 형식을 모두 읽어들였지만, training 이 안됨
 > - 구글링 결과 https://github.com/thtrieu/darkflow/issues/265 에서 지적한 것처럼, filename 이라는 노드에 확장자가 같이 들어가 있는 경우 나와 같은 오류가 발생한다는 것을 발견함. 하지만 나는 해당 사항이 아니었음. 그리고 https://github.com/thtrieu/darkflow/commit/80f5798d7dcce94969577b585cd26aa0f0c74602 를 찾음.
+> - 하지만 나의 이슈는 그것이 아니었고, 오히려 소스 내 path 의 형식에 확장자를 잘 붙여 주어야 한다는 것을 알게 됨. linux 기반의 프로그램을 윈도우에서 돌리다 보니 발생한 문져였던 것 같음. python 에서 os.join() 함수는 예를 들어 "\" 를 사용하는데 윈도우에서는 "/" 를 사용하는.. 이런 문제와, linux 에서는 .확장자 를 명명하지 않아도 되는데 windows 터미널에서는 .확장자 를 명명해야 한다는.
 
 
 - 2019/8/16
