@@ -3,6 +3,15 @@ import os
 import xml.etree.ElementTree as et
 import argparse
 
+
+
+ap = argparse.ArgumentParser()
+ap.add_argument("-d", "--debuging", type=str, help = "디버그 모드에서는 임의의 파일로 실험해볼 수 있습니다.")
+ap.add_argument("-f", "--filename", type=str, help="select file")
+args = vars(ap.parse_args())
+
+
+
 '''
 <?xml version="1.0"?>
 <annontation>
@@ -21,14 +30,18 @@ import argparse
             <ymax>236</ymax>
         </bndbox>
     </object>
+    <object>
+        <name>pig</name>
+        <bndbox>
+            <xmin>19</xmin>
+            <ymin>84</ymin>
+            <xmax>144</xmax>
+            <ymax>236</ymax>
+        </bndbox>
+    </object>
+    ...
 </annontation>
 '''
-
-ap = argparse.ArgumentParser()
-ap.add_argument("-d", "--debuging", type=str, help = "디버그 모드에서는 임의의 파일로 실험해볼 수 있습니다.")
-ap.add_argument("-f", "--filename", type=str, help="select file")
-args = vars(ap.parse_args())
-
 
 class FileData :
 
@@ -37,7 +50,6 @@ class FileData :
         self.folder = et.SubElement(self.root, "folder")
         self.filename = et.SubElement(self.root, "filname")
         self.size = et.SubElement(self.root, "size")
-        self.obj = et.SubElement(self.root, "object")
         self.file_fullpath = filefullpath
         self.file_folderpath,   self.file_fullname = os.path.split(filefullpath)
         self.file_justfilename, self.file_justext  = os.path.splitext(self.file_fullname)
@@ -55,7 +67,42 @@ class FileData :
         tree = et.ElementTree(self.root)
         tree.write(file_or_filename = os.path.join(self.file_savefolder, file_name))
 
+    def setObject(self, bboxobj) :
+        obj = et.SubElement(self.root, "object")
+        name = et.SubElement(obj, "name")
+        name.text = bboxobj.name
 
+        bbox = et.SubElement(obj, "bndbox")
+        xmin = et.SubElement(bbox, "xmin")
+        xmin.text = str(bboxobj.xmin)
+        ymin = et.SubElement(bbox, "ymin")
+        ymin.text = str(bboxobj.ymin)
+        xmax = et.SubElement(bbox, "xmax")
+        xmax.text = str(bboxobj.xmax)
+        ymax = et.SubElement(bbox, "ymax")
+        ymax.text = str(bboxobj.ymax)
+
+
+class BboxObject :
+
+    def __init__(self, p1, p2) :
+        x1 = p1[0]
+        y1 = p1[1]
+        x2 = p2[0]
+        y2 = p2[1]
+        if x1 > x2 :
+            self.xmax = int(x1)
+            self.xmin = int(x2)
+        else :
+            self.xmax = int(x2)
+            self.xmin = int(x1)
+
+        if y1 > y2 :
+            self.ymax = int(y1)
+            self.ymin = int(y2)
+        else :
+            self.ymax = int(y2)
+            self.ymin = int(y1)
 
 
 if True :
@@ -70,6 +117,8 @@ if True :
 
     print("\n\n\n")
     testfile = FileData(file_full_path, current_dir, debugmode = True)
+    testfile.setObject()
+    testfile.setObject()
     testfile.writeAndSave()
 
 

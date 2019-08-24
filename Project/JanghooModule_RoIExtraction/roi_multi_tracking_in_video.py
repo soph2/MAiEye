@@ -9,9 +9,10 @@ import argparse
 #Parsing#
 #-------#
 ap = argparse.ArgumentParser()
-ap.add_argument("-v", "--video", type=str, help="path to input video file")
-ap.add_argument("-t", "--tracker", type=str, help="BOOSTING, MIL, KCF, TLD, MEDIANFLOW, GOTURN, MOSSE, CSRT")
-
+ap.add_argument("-v", "--video", type=str, help="[string] : path to input video file")
+ap.add_argument("-t", "--tracker", type=str, help="[string] : BOOSTING, MIL, KCF, TLD, MEDIANFLOW, GOTURN, MOSSE, CSRT")
+ap.add_argument("-l", "--label", type=str, help="[string] : label name")
+ap.add_argument("-ms", "--milliseconds", type=int, help="[int] : save image per n milliseconds")
 args = vars(ap.parse_args())
 
 
@@ -19,7 +20,6 @@ args = vars(ap.parse_args())
 videoPath = args["video"]
 
 
-#reference https://www.learnopencv.com/multitracker-multiple-object-tracking-using-opencv-c-python/
 trackerTypes =['BOOSTING', 'MIL', 'KCF','TLD', 'MEDIANFLOW', 'GOTURN', 'MOSSE', 'CSRT']
 def createTrackerByName(trackerType):
     # Create a tracker based on tracker name
@@ -65,6 +65,7 @@ if not success:
 #imshow : 특정 window 에 img 를 표시한다.
 cv2.namedWindow('Selecting RoI')
 cv2.imshow('Selecting RoI', frame)
+
 
 ## Select boxes
 bboxes = []
@@ -121,9 +122,9 @@ cv2.imshow('Selecting RoI', frameandBbox)
 
 
 
-#--------------#
-#Save the Movie#
-#--------------#
+#---------------------#
+#Movie Saving Settings#
+#---------------------#
 w = cap.get(3)
 h = cap.get(4)
 output_size = (int(w), int(h))
@@ -135,23 +136,59 @@ out = cv2.VideoWriter('%s_output.mp4' % (videoPath.split('.')[0]), codec, cap.ge
 
 
 
-# Process video and track objects
+
+#-----------------------------------------#
+#Imagefile and Annotatioin Saving Settings#
+#-----------------------------------------#
+
+from BBoxToDataset.BboxObject import BboxObject
+    # bbox object 객체들을 보관할것
+    # bbox 가 4개라면 bbox 객체 4개를 만드는것
+bboxobjects = []
+for i in range(0,len(bboxes),1) :
+    a = BboxObject((0,0), (0,0))
+    bboxobjects.append(a)
+
+
+
+#-------------------------------#
+#Process video and track objects#
+#-------------------------------#
+font = cv2.FONT_HERSHEY_SIMPLEX #just font setting
+save_image_per_n_milliseconds = args["milliseconds"]
+framecount = 0
 while cap.isOpened():
     success, frame = cap.read()
     if not success:
         break
+    framecount += 1
 
     # get updated location of objects in subsequent frames
     success, boxes = multiTracker.update(frame)
 
     # 그냥 박스 안에 무슨 요소들이 들어가 있는지 궁금해서...
-    print(boxes)
+    # print(boxes)
+
 
     # draw tracked objects
+    # 만약 object 가 4개라면 loop 를 4번 돌게 된다.
     for i, newbox in enumerate(boxes):
         p1 = (int(newbox[0]), int(newbox[1]))
         p2 = (int(newbox[0] + newbox[2]), int(newbox[1] + newbox[3]))
         cv2.rectangle(frame, p1, p2, colors[i], 2, 1)
+        # Set Font and put Text on BBox
+        cv2.putText(frame, args["label"],
+                    (int(newbox[0]), int(newbox[1] - 4)),
+                    font,
+                    fontScale=0.5,
+                    color=colors[i],
+                    thickness=2,
+                    lineType=cv2.LINE_AA)
+
+        if framecount % save_image_per_n_milliseconds == 0 :
+            # -ms 로 지정한 만큼마다, bbox object 객체의 데이터를 초기화해줌.
+            # 초기화된 데이터는 object 객체에 들어가줘야함.
+            bboxobjects[i].__init__(p1, p2)
 
     # show frame
     cv2.imshow('MultiTracker', frame)
@@ -161,4 +198,8 @@ while cap.isOpened():
     if cv2.waitKey(1) & 0xFF == 27:  # Esc pressed
         break
 
+print("session end")
 
+
+
+#reference https://www.learnopencv.com/multitracker-multiple-object-tracking-using-opencv-c-python/

@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d78aea6b-1a77-46e8-b9b9-bfe24dd95f87" name="Default Changelist" comment="" />
+    <list default="true" id="d78aea6b-1a77-46e8-b9b9-bfe24dd95f87" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../JanghooModule_RoIExtraction/BBoxToDataset/BboxObject.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JanghooModule_RoIExtraction/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../JanghooModule_RoIExtraction/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JanghooModule_RoIExtraction/BBoxToDataset/MultipleBBoxToData.py" beforeDir="false" afterPath="$PROJECT_DIR$/../JanghooModule_RoIExtraction/BBoxToDataset/MultipleBBoxToData.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JanghooModule_RoIExtraction/BBoxToDataset/sample.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../JanghooModule_RoIExtraction/BBoxToDataset/sample.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JanghooModule_RoIExtraction/perion_mob5_output.mp4" beforeDir="false" afterPath="$PROJECT_DIR$/../JanghooModule_RoIExtraction/perion_mob5_output.mp4" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JanghooModule_RoIExtraction/roi_multi_tracking_in_video.py" beforeDir="false" afterPath="$PROJECT_DIR$/../JanghooModule_RoIExtraction/roi_multi_tracking_in_video.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,6 +63,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RunDashboard">
@@ -84,7 +93,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="641" y="0" width="1316" height="1047" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="Favorites" side_tool="true" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.27543035" />

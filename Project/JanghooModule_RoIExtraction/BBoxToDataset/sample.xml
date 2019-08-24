@@ -1,1 +1,23 @@
-<annotation><folder /><filname /><size /><object /></annotation>
+<annotation>
+    <folder />
+    <filname />
+    <size />
+    <object>
+        <name />
+        <bndbox>
+            <xmin />
+            <ymin />
+            <xmax />
+            <ymax />
+        </bndbox>
+    </object>
+    <object>
+        <name />
+        <bndbox>
+            <ymin />
+            <xmax />
+            <ymax />
+        </bndbox>
+    </object>
+</annotation>
+
