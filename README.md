@@ -148,11 +148,11 @@ and <br>
 
 - 2019/8/23
 > - 깃허브 저장소 증발.. 새로운 저장소 만들기
-> - python BBox 정보를 저장할 클래스 생성 - https://codeday.me/ko/qa/20190604/710379.html
+> - python BBox 정보를 저장할 클래스 생성 - 참고 : https://codeday.me/ko/qa/20190604/710379.html
 > - 
 
 - 2019/8/24
 > - 클래스에 데이터 삽입, 파일로 추출하는 함수 완성
 > - 로컬에서 돌려보고 결과 잘 나오면, colab 알아볼것
-> - colab 에서 구현하기 성공시킬 것.
+> - colab 에서 구현하기 성공시킬 것. - 참고 : https://blog.nerdfactory.ai/2019/04/25/learn-bert-with-colab.html
 > - 이력서 작성
