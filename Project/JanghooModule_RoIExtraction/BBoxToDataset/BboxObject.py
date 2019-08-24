@@ -1,10 +1,12 @@
 import os
 import xml.etree.ElementTree as et
 import cv2
+import numpy as np
 
 
 class BboxObject :
-    def __init__(self, p1, p2) :
+    def __init__(self, p1, p2, name) :
+        self.name = name
         x1 = p1[0]
         y1 = p1[1]
         x2 = p2[0]
@@ -30,21 +32,32 @@ class BboxObject :
 
 class FileData :
 
-    def __init__(self, filefullpath, viedo_frame, savefolder, debugmode = False):
+    def __init__(self, filefullpath, video_frame_count, video_frame, savefolder, debugmode = False):
 
         # Inner Data
         self.file_fullpath = filefullpath
         self.file_folderpath,   self.file_fullname = os.path.split(filefullpath)
         self.file_justfilename, self.file_justext  = os.path.splitext(self.file_fullname)
         self.file_savefolder = savefolder
-        self.video_frame = viedo_frame
+        self.video_frame_count = video_frame_count
 
+        self.xml_file_name = str(self.file_justfilename) + "_" + str(self.video_frame_count) + '.xml'
+        self.img_file_name = str(self.file_justfilename) + "_" + str(self.video_frame_count) + '.jpg'
 
         # XML nodes
         self.root = et.Element("annotation")
+
         self.folder = et.SubElement(self.root, "folder")
+        self.folder.text = str(self.file_savefolder)
+
         self.filename = et.SubElement(self.root, "filname")
+        self.filename.text = str(self.img_file_name)
+
         self.size = et.SubElement(self.root, "size")
+        self.width = et.SubElement(self.size, "width")
+        self.width.text = str(int(np.size(video_frame, 1)))
+        self.height = et.SubElement(self.size, "height")
+        self.height.text = str(int(np.size(video_frame, 0)))
 
 
         if debugmode == True :
@@ -55,11 +68,9 @@ class FileData :
 
 
     def writeAndSave(self, image) :
-        xml_file_name = str(self.file_justfilename) + "_" + str(self.video_frame) + '.xml'
-        img_file_name = str(self.file_justfilename) + "_" + str(self.video_frame) + '.jpg'
         tree = et.ElementTree(self.root)
-        tree.write(file_or_filename =os.path.join(self.file_savefolder, xml_file_name))
-        cv2.imwrite(os.path.join(self.file_savefolder, img_file_name), image)
+        tree.write(file_or_filename =os.path.join(self.file_savefolder, self.xml_file_name))
+        cv2.imwrite(os.path.join(self.file_savefolder, self.img_file_name), image)
 
 
     def setObject(self, bboxobj) :
@@ -76,3 +87,37 @@ class FileData :
         xmax.text = str(bboxobj.xmax)
         ymax = et.SubElement(bbox, "ymax")
         ymax.text = str(bboxobj.ymax)
+
+
+
+
+'''
+<?xml version="1.0"?>
+<annontation>
+    <folder>images</folder>
+    <filename>10.jpg</filename>
+    <size>
+        <width>450</width>
+        <height>328</height>
+    </size>
+    <object>
+        <name>pig</name>
+        <bndbox>
+            <xmin>19</xmin>
+            <ymin>84</ymin>
+            <xmax>144</xmax>
+            <ymax>236</ymax>
+        </bndbox>
+    </object>
+    <object>
+        <name>pig</name>
+        <bndbox>
+            <xmin>19</xmin>
+            <ymin>84</ymin>
+            <xmax>144</xmax>
+            <ymax>236</ymax>
+        </bndbox>
+    </object>
+    ...
+</annontation>
+'''

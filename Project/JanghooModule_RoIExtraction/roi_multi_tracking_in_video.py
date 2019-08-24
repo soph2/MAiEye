@@ -4,6 +4,7 @@ import os
 
 from random import randint
 import argparse
+from BBoxToDataset.CreateTracker import createTrackerByName
 
 
 #-------#
@@ -16,39 +17,15 @@ ap.add_argument("-l", "--label", type=str, help="[string] : label name")
 ap.add_argument("-ms", "--milliseconds", type=int, help="[int] : save image per n milliseconds")
 ap.add_argument("-sp", "--savepath", type=str, help="[string] : saving path (absolute path , 절대경로)")
 args = vars(ap.parse_args())
-
-
 # Set video to load
 videoPath = args["video"]
+# Specify the tracker type
+trackerType = args["tracker"]
+# and the others...
+labelName = args["label"]
+savefolder = args["savepath"]
+waitingTime = args["milliseconds"]
 
-
-trackerTypes =['BOOSTING', 'MIL', 'KCF','TLD', 'MEDIANFLOW', 'GOTURN', 'MOSSE', 'CSRT']
-def createTrackerByName(trackerType):
-    # Create a tracker based on tracker name
-    if trackerType == trackerTypes[0]:
-        tracker = cv2.TrackerBoosting_create()
-    elif trackerType == trackerTypes[1]:
-        tracker = cv2.TrackerMIL_create()
-    elif trackerType == trackerTypes[2]:
-        tracker = cv2.TrackerKCF_create()
-    elif trackerType == trackerTypes[3]:
-        tracker = cv2.TrackerTLD_create()
-    elif trackerType == trackerTypes[4]:
-        tracker = cv2.TrackerMedianFlow_create()
-    elif trackerType == trackerTypes[5]:
-        tracker = cv2.TrackerGOTURN_create()
-    elif trackerType == trackerTypes[6]:
-        tracker = cv2.TrackerMOSSE_create()
-    elif trackerType == trackerTypes[7]:
-        tracker = cv2.TrackerCSRT_create()
-    else:
-        tracker = None
-        print('Incorrect tracker name')
-        print('Available trackers are:')
-        for t in trackerTypes:
-            print(t)
-
-    return tracker
 
 
 # Create a video capture object to read videos
@@ -56,7 +33,6 @@ cap = cv2.VideoCapture(videoPath)
 
 # Read first frame
 success, frame = cap.read()
-
 
 # quit if unable to read the video file
 if not success:
@@ -67,7 +43,6 @@ if not success:
 #imshow : 특정 window 에 img 를 표시한다.
 cv2.namedWindow('Selecting RoI')
 cv2.imshow('Selecting RoI', frame)
-
 
 ## Select boxes
 bboxes = []
@@ -95,10 +70,9 @@ while True:
     if (k == 113):  # q is pressed
         break
 
-print('Selected bounding boxes {}'.format(bboxes))
+print('Selected bounding boxes : {}'.format(bboxes))
 
-# Specify the tracker type
-trackerType = args["tracker"]
+
 
 # Create MultiTracker object
 multiTracker = cv2.MultiTracker_create()
@@ -132,7 +106,7 @@ h = cap.get(4)
 output_size = (int(w), int(h))
 print(output_size)
 codec = cv2.VideoWriter_fourcc('m', 'p', '4', 'v')
-out = cv2.VideoWriter('%s_output.mp4' % (videoPath.split('.')[0]), codec, cap.get(cv2.CAP_PROP_FPS), output_size)
+outconfig = cv2.VideoWriter('%s_output.mp4' % (videoPath.split('.')[0]), codec, cap.get(cv2.CAP_PROP_FPS), output_size)
 #cap.get(cv2.CAP_PROP_FPS) : get - cap 에서 가져와. prop_fps : 적당한 frame per second를. 즉, 그 동영상의 fps
 #output_size : 위에서 설정한 hyper parameter 임.
 
@@ -148,11 +122,10 @@ from BBoxToDataset.BboxObject import BboxObject
     # bbox 가 4개라면 bbox 객체 4개를 만드는것
 bboxobjects = []
 for i in range(0,len(bboxes),1) :
-    a = BboxObject((0,0), (0,0))
+    a = BboxObject((0,0), (0,0), labelName)
     bboxobjects.append(a)
 
 from BBoxToDataset.BboxObject import FileData
-savefolder = args["savepath"]
 if not os.path.isdir(savefolder) :
     # save folder 이 존재하지 않는다면..
     os.makedirs(savefolder)
@@ -168,14 +141,15 @@ savefolder = savefolder
 #Process video and track objects#
 #-------------------------------#
 font = cv2.FONT_HERSHEY_SIMPLEX #just font setting
-save_image_per_n_milliseconds = args["milliseconds"]
+save_image_per_n_milliseconds = waitingTime
 framecount = 0
 while cap.isOpened():
     success, frame = cap.read()
     if not success:
         break
     framecount += 1
-    filedata = FileData(filefullpath, framecount, savefolder)
+    originalframe = frame.copy()
+    filedata = FileData(filefullpath, framecount, frame, savefolder)
 
     # get updated location of objects in subsequent frames
     success, boxes = multiTracker.update(frame)
@@ -191,7 +165,7 @@ while cap.isOpened():
         p2 = (int(newbox[0] + newbox[2]), int(newbox[1] + newbox[3]))
         cv2.rectangle(frame, p1, p2, colors[i], 2, 1)
         # Set Font and put Text on BBox
-        cv2.putText(frame, args["label"],
+        cv2.putText(frame, labelName,
                     (int(newbox[0]), int(newbox[1] - 4)),
                     font,
                     fontScale=0.5,
@@ -202,21 +176,22 @@ while cap.isOpened():
         if framecount % save_image_per_n_milliseconds == 0 :
             # -ms 로 지정한 만큼마다, bbox object 객체의 데이터를 초기화해줌.
             # 초기화된 데이터는 object 객체에 들어가줘야함.
-            bboxobjects[i].__init__(p1, p2)
+            bboxobjects[i].__init__(p1, p2, labelName)
             filedata.setObject(bboxobjects[i])
 
     # show frame
     cv2.imshow('MultiTracker', frame)
-    filedata.writeAndSave(frame)
-    out.write(frame)
+    outconfig.write(frame)
+
+    # -ms 로 지정한 만큼마다, 그 프레임의 데이터와 사진을 저장함.
+    if framecount % save_image_per_n_milliseconds == 0 :
+        filedata.writeAndSave(originalframe)
 
     # quit on ESC button
     if cv2.waitKey(1) & 0xFF == 27:  # Esc pressed
         break
 
 print("session end")
-
-
 
 
 
