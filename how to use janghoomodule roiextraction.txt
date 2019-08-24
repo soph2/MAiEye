@@ -1,0 +1,2 @@
+(base) C:\Users\user\Desktop\programming_PROJECTS\MAiEye\MAiEye\Project\JanghooModule_RoIExtraction>python roi_multi_tracking_in_video.py -t CSRT -sp C:\Users\user\Desktop\programming_PROJECTS\MAiEye\Data\map
+lestory_image_and_annotation_source -ms 5 -v C:\Users\user\Desktop\programming_PROJECTS\MAiEye\Data\maplestory_video_source\perion\stop\perion_mob1.mp4 --label stump

@@ -32,7 +32,7 @@ class BboxObject :
 
 class FileData :
 
-    def __init__(self, filefullpath, video_frame_count, video_frame, savefolder, debugmode = False):
+    def __init__(self, filefullpath, video_frame_count, video_frame, savefolder, labelname, debugmode = False):
 
         # Inner Data
         self.file_fullpath = filefullpath
@@ -40,9 +40,10 @@ class FileData :
         self.file_justfilename, self.file_justext  = os.path.splitext(self.file_fullname)
         self.file_savefolder = savefolder
         self.video_frame_count = video_frame_count
+        self.labelname = labelname
 
-        self.xml_file_name = str(self.file_justfilename) + "_" + str(self.video_frame_count) + '.xml'
-        self.img_file_name = str(self.file_justfilename) + "_" + str(self.video_frame_count) + '.jpg'
+        self.xml_file_name = str(self.file_justfilename) + "_" + str(labelname) + "_" + str(self.video_frame_count) + '.xml'
+        self.img_file_name = str(self.file_justfilename) + "_" + str(labelname) + "_" + str(self.video_frame_count) + '.jpg'
 
         # XML nodes
         self.root = et.Element("annotation")
@@ -50,7 +51,7 @@ class FileData :
         self.folder = et.SubElement(self.root, "folder")
         self.folder.text = str(self.file_savefolder)
 
-        self.filename = et.SubElement(self.root, "filname")
+        self.filename = et.SubElement(self.root, "filename")
         self.filename.text = str(self.img_file_name)
 
         self.size = et.SubElement(self.root, "size")
