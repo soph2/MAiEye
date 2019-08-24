@@ -46,10 +46,14 @@ args = vars(ap.parse_args())
 class FileData :
 
     def __init__(self, filefullpath, savefolder, debugmode = False):
+
+        # XML nodes
         self.root = et.Element("annotation")
         self.folder = et.SubElement(self.root, "folder")
         self.filename = et.SubElement(self.root, "filname")
         self.size = et.SubElement(self.root, "size")
+
+        # Inner Data
         self.file_fullpath = filefullpath
         self.file_folderpath,   self.file_fullname = os.path.split(filefullpath)
         self.file_justfilename, self.file_justext  = os.path.splitext(self.file_fullname)

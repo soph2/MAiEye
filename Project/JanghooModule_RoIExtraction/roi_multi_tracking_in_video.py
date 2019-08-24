@@ -1,5 +1,6 @@
 import sys
 import cv2
+import os
 
 from random import randint
 import argparse
@@ -13,6 +14,7 @@ ap.add_argument("-v", "--video", type=str, help="[string] : path to input video 
 ap.add_argument("-t", "--tracker", type=str, help="[string] : BOOSTING, MIL, KCF, TLD, MEDIANFLOW, GOTURN, MOSSE, CSRT")
 ap.add_argument("-l", "--label", type=str, help="[string] : label name")
 ap.add_argument("-ms", "--milliseconds", type=int, help="[int] : save image per n milliseconds")
+ap.add_argument("-sp", "--savepath", type=str, help="[string] : saving path (absolute path , 절대경로)")
 args = vars(ap.parse_args())
 
 
@@ -149,6 +151,17 @@ for i in range(0,len(bboxes),1) :
     a = BboxObject((0,0), (0,0))
     bboxobjects.append(a)
 
+from BBoxToDataset.BboxObject import FileData
+savefolder = args["savepath"]
+if not os.path.isdir(savefolder) :
+    # save folder 이 존재하지 않는다면..
+    os.makedirs(savefolder)
+    print("폴더가 존재하지 않아, 새로운 폴더를 생성합니다.")
+    # 폴더를 생성한다.
+
+#class init parameters
+filefullpath = videoPath
+savefolder = savefolder
 
 
 #-------------------------------#
@@ -162,6 +175,7 @@ while cap.isOpened():
     if not success:
         break
     framecount += 1
+    filedata = FileData(filefullpath, framecount, savefolder)
 
     # get updated location of objects in subsequent frames
     success, boxes = multiTracker.update(frame)
@@ -189,9 +203,11 @@ while cap.isOpened():
             # -ms 로 지정한 만큼마다, bbox object 객체의 데이터를 초기화해줌.
             # 초기화된 데이터는 object 객체에 들어가줘야함.
             bboxobjects[i].__init__(p1, p2)
+            filedata.setObject(bboxobjects[i])
 
     # show frame
     cv2.imshow('MultiTracker', frame)
+    filedata.writeAndSave(frame)
     out.write(frame)
 
     # quit on ESC button
@@ -202,4 +218,7 @@ print("session end")
 
 
 
+
+
 #reference https://www.learnopencv.com/multitracker-multiple-object-tracking-using-opencv-c-python/
+

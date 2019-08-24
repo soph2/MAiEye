@@ -1,3 +1,8 @@
+import os
+import xml.etree.ElementTree as et
+import cv2
+
+
 class BboxObject :
     def __init__(self, p1, p2) :
         x1 = p1[0]
@@ -20,3 +25,54 @@ class BboxObject :
 
         # Debug
         # print(self.xmin, self.ymin, "~", self.xmax, self.ymax)
+
+
+
+class FileData :
+
+    def __init__(self, filefullpath, viedo_frame, savefolder, debugmode = False):
+
+        # Inner Data
+        self.file_fullpath = filefullpath
+        self.file_folderpath,   self.file_fullname = os.path.split(filefullpath)
+        self.file_justfilename, self.file_justext  = os.path.splitext(self.file_fullname)
+        self.file_savefolder = savefolder
+        self.video_frame = viedo_frame
+
+
+        # XML nodes
+        self.root = et.Element("annotation")
+        self.folder = et.SubElement(self.root, "folder")
+        self.filename = et.SubElement(self.root, "filname")
+        self.size = et.SubElement(self.root, "size")
+
+
+        if debugmode == True :
+            print('------------------OBJECT-------------------')
+            print('full path  : ', self.file_fullpath)
+            print('folderpath : ', self.file_folderpath)
+            print('file name  : {}, (name : {}, ext : {})\n'.format(self.file_fullname, self.file_justfilename, self.file_justext))
+
+
+    def writeAndSave(self, image) :
+        xml_file_name = str(self.file_justfilename) + "_" + str(self.video_frame) + '.xml'
+        img_file_name = str(self.file_justfilename) + "_" + str(self.video_frame) + '.jpg'
+        tree = et.ElementTree(self.root)
+        tree.write(file_or_filename =os.path.join(self.file_savefolder, xml_file_name))
+        cv2.imwrite(os.path.join(self.file_savefolder, img_file_name), image)
+
+
+    def setObject(self, bboxobj) :
+        obj = et.SubElement(self.root, "object")
+        name = et.SubElement(obj, "name")
+        name.text = bboxobj.name
+
+        bbox = et.SubElement(obj, "bndbox")
+        xmin = et.SubElement(bbox, "xmin")
+        xmin.text = str(bboxobj.xmin)
+        ymin = et.SubElement(bbox, "ymin")
+        ymin.text = str(bboxobj.ymin)
+        xmax = et.SubElement(bbox, "xmax")
+        xmax.text = str(bboxobj.xmax)
+        ymax = et.SubElement(bbox, "ymax")
+        ymax.text = str(bboxobj.ymax)
