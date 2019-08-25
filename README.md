@@ -156,3 +156,11 @@ and <br>
 > - 로컬에서 돌려보고 결과 잘 나오면, colab 알아볼것
 > - colab 에서 구현하기 성공시킬 것. - 참고 : https://blog.nerdfactory.ai/2019/04/25/learn-bert-with-colab.html
 > - 이력서 작성
+> - 100 에폭 돌려놓고 취침
+
+- 2019/8/25
+> - image detection 모델 : 50에폭정도로 한번 test 해봤는데 전혀 검출을 못해냄. 정확도 0%
+> - 정방형이 아니고 가로로 길쭉한 영상은 제대로 object detection 을 못 할수도 있겠구나 하고 생각하여, input shape 을 바꿔보기로 함
+> - input shape 에 대한 연구
+> - image classification 모델 : zfnet 채택 https://github.com/amir-saniyan/ZFNet 안되면 alexnet 개량해서 사용하기로 결정
+> - classification 모델 성공시키는 것이 목표
