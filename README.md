@@ -162,5 +162,7 @@ and <br>
 > - image detection 모델 : 50에폭정도로 한번 test 해봤는데 전혀 검출을 못해냄. 정확도 0%
 > - 정방형이 아니고 가로로 길쭉한 영상은 제대로 object detection 을 못 할수도 있겠구나 하고 생각하여, input shape 을 바꿔보기로 함
 > - input shape 에 대한 연구
+> - zfnet 이나 alexnet 
+> - 데이터셋 다시 모으기 (정방형으로), 그리고 move 데이터셋 class 4개로 늘릴것. (커닝시티, 엘리니아, 헤네시스, 페리온)
 > - image classification 모델 : zfnet 채택 https://github.com/amir-saniyan/ZFNet 안되면 alexnet 개량해서 사용하기로 결정
 > - classification 모델 성공시키는 것이 목표
