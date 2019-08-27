@@ -70,9 +70,10 @@ and <br>
 > 5. Github, 'What does "normalized xywh" mean?' : https://github.com/ultralytics/yolov3/issues/341
 > 6. Blog, '적은 데이터셋으로 강력한 모델 학습시키기' : https://keraskorea.github.io/posts/2018-10-24-little_data_powerful_model/
 
-- Yolo 모델은 다음을 가져왔다.
+- 모델은 다음을 가져왔다.
 > 1. Github, 'yolo v3 with tensorflow (darkflow)' : https://github.com/thtrieu/darkflow
 > 2. Github, blog, 'original yolo v3 for window (darknet)' : https://darkpgmr.tistory.com/170 && https://github.com/AlexeyAB/darknet/
+> 3. AlexNet
 
 - 위에서 나오는 기본적인 tensorflow 내용은 다음을 참고했다.
 > 1. Blog, 'operator' : https://tensorflowkorea.gitbooks.io/tensorflow-kr/content/g3doc/get_started/basic_usage.html
@@ -83,6 +84,7 @@ and <br>
 
 - 기타
 > 1. 김태영 블로그 : https://tykimos.github.io/2017/03/25/Fit_Talk/
+> 2. 김태영 블로그, 컨볼루션 신경망 모델 만들어보기 : https://tykimos.github.io/2017/03/08/CNN_Getting_Started/
 
 
 <br>
@@ -168,3 +170,6 @@ and <br>
 > - classification 모델 성공시키는 것이 목표
 > - classification 모델 조사해보니 죄다 CiFar-10 데이터셋을 사용하는데, 그 데이터셋을 바꾸는 방법을 도저히 모르겠음.
 > - 구글링 결과 비슷한 아픔을 느낀 사람 발견 https://github.com/hohoins/ml/tree/master/ImageBinaryGenerator
+
+- 2019/8/27
+> - https://tykimos.github.io/2017/03/08/CNN_Getting_Started/
