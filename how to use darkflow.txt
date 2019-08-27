@@ -3,7 +3,7 @@ cfg 파일을 setting 하다가 오류가 날 수 있음. 그냥 cfg 파일 parsing 과정에서 나오
 
 
 //학습
-C:\Users\user\Desktop\programming_PROJECTS\MAiEye\MAiEye\Project\darkflow>python flow --model cfg/yolo-voc-maple.cfg --dataset C:\Users\user\Desktop\programming_PROJECTS\MAiEye\Data\maplestory_image_and_annotation_source\image --annotation C:\Users\user\Desktop\programming_PROJECTS\MAiEye\Data\maplestory_image_and_annotation_source\annotation --trainer adam --train --lr 0.001 --epoch 10 --batch 4
+C:\Users\user\Desktop\programming_PROJECTS\MAiEye\MAiEye\Project\darkflow>python flow --model cfg/yolo-voc-maple.cfg --dataset C:\Users\user\Desktop\programming_PROJECTS\MAiEye\Data\maplestory_image_and_annotation_source\image --annotation C:\Users\user\Desktop\programming_PROJECTS\MAiEye\Data\maplestory_image_and_annotation_source\annotation --trainer adam --train --lr 0.001 --epoch 100 --batch 4 --save 100
 
 
 //pb저장
@@ -11,6 +11,6 @@ python flow --model cfg/yolo-voc-maple.cfg --load 110 --savepb
 
 
 //detecting 시작
-python flow --pbLoad built_graph/yolo-voc-maple.pb --metaLoad built_graph/yolo-voc-maple.meta --imgdir C:\Users\user\Desktop\programming_PROJECTS\MAiEye\Data\maplestory_image_and_annotation_source\image\test
+python flow --pbLoad built_graph/yolo-voc-maple.pb --metaLoad built_graph/yolo-voc-maple.meta --imgdir C:\Users\user\Desktop\programming_PROJECTS\MAiEye\Data\test
 
 

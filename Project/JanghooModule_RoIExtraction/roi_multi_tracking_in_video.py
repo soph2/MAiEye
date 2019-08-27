@@ -1,6 +1,7 @@
 import sys
 import cv2
 import os
+import numpy as np
 
 from random import randint
 import argparse
@@ -44,8 +45,10 @@ def flow (videoPath, trackerType, labelName, savefolder, waitingTime) :
     #namedWindow : string 이름을 가진 window 를 표시한다.
     #imshow : 특정 window 에 img 를 표시한다.
     cv2.namedWindow('Selecting RoI')
+    frame = cv2.resize(frame, dsize=(416, 416), interpolation=cv2.INTER_AREA)
     cv2.imshow('Selecting RoI', frame)
 
+    print("size is : ", np.size(frame, 0), np.size(frame, 1))
     ## Select boxes
     bboxes = []
     colors = []
@@ -103,8 +106,8 @@ def flow (videoPath, trackerType, labelName, savefolder, waitingTime) :
     #---------------------#
     #Movie Saving Settings#
     #---------------------#
-    w = cap.get(3)
-    h = cap.get(4)
+    w = np.size(frame, 0)
+    h = np.size(frame, 0)
     output_size = (int(w), int(h))
     print(output_size)
     codec = cv2.VideoWriter_fourcc('m', 'p', '4', 'v')
@@ -147,9 +150,12 @@ def flow (videoPath, trackerType, labelName, savefolder, waitingTime) :
     framecount = 0
     while cap.isOpened():
         success, frame = cap.read()
+
         if not success:
             break
         framecount += 1
+
+        frame = cv2.resize(frame, dsize=(416, 416), interpolation=cv2.INTER_AREA)
         originalframe = frame.copy()
         filedata = FileData(filefullpath, framecount, frame, savefolder, labelName)
 
