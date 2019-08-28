@@ -173,3 +173,8 @@ and <br>
 
 - 2019/8/27
 > - https://tykimos.github.io/2017/03/08/CNN_Getting_Started/
+
+
+
+- 2019/8/28
+> - https://github.com/thtrieu/darkflow/issues/80
