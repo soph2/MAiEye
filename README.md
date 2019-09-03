@@ -28,7 +28,7 @@ and <br>
  
 | Title | Subject | Original Source & reference | 이용목적 | 관계 |
 |-------|:-------:|:----------------------------|:--------:|:----:|
-| Darkflow | | | | |
+| Darkflow | | | Yolo Model | 1. tiny yolo maple Model 의 Trained Weight 가 저장되어 있음.<br>|
 | JanghooModule| MapCapture | | | |
 | | RoIExtraction | | | |
 | | RunWithMapleGUI | | | |
