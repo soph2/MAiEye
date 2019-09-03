@@ -19,6 +19,21 @@ and <br>
 <br>
 
 
+
+
+
+## Folder - Project
+
+ - 프로젝트 폴더입니다.
+ 
+| Title | Subject | Original Source & reference | 이용목적 | 관계 |
+|---|:---:|:---|:---:|
+| Darkflow | | |
+| JanghooModule| MapCapture | |
+| | RoIExtraction | |
+| | RunWithMapleGUI | |
+
+
 ## Folder - Study
 
  - 프로젝트에 필요한 공부를 한 내용들을 정리해 담았습니다.
@@ -89,18 +104,6 @@ and <br>
 
 <br>
 <br>
-
-
-## Folder - Project
-
- - 프로젝트 폴더입니다.
- 
-| Title | Subject | Original Source | 이용목적 |
-|---|:---:|:---|:---:|
-|  WzComparerR2 |  MapleStory Source Crawler  |    | 몬스터와 지형 등의 이미지값을 읽어오기 위해 사용 |
-| MapleSourceFileEditor.inpynb | MapleStory Source file editor | 직접 제작 | 하나의 디렉토리로 이름을 변경하고 모아주기 위해 사용 |
-
-
 
 <br>
 
