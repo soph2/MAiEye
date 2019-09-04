@@ -13,3 +13,7 @@ rs\user\Desktop\programming_PROJECTS\MAiEye\Data\maplestory_video_source\elinia\
 //Ä¿´×½ÃÆ¼
 (base) C:\Users\user\Desktop\programming_PROJECTS\MAiEye\MAiEye\Project>python start.py -sp C:\Users\user\Desktop\programming_PROJECTS\MAiEye\Data\maplestory_map_source\kerningcity --labeltype map -ms 1 -v C
 :\Users\user\Desktop\programming_PROJECTS\MAiEye\Data\maplestory_video_source\kerningcity\move --label kerningcity --imagesize 80
+
+
+//Test
+(base) C:\Users\user\Desktop\programming_PROJECTS\MAiEye\MAiEye\Project>python start.py -sp C:\Users\user\Desktop\programming_PROJECTS\MAiEye\Data\test\henesis --labeltype map -ms 2 -v C:\Users\user\Desktop\programming_PROJECTS\MAiEye\Data\test_stop\henesis --label henesis --imagesize 80

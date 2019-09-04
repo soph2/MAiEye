@@ -176,9 +176,9 @@ def flow (videoPath, trackerType, labelName, savefolder, waitingTime) :
             cv2.putText(frame, labelName,
                         (int(newbox[0]), int(newbox[1] - 4)),
                         font,
-                        fontScale=0.5,
+                        fontScale=0.3,
                         color=colors[i],
-                        thickness=2,
+                        thickness=1,
                         lineType=cv2.LINE_AA)
 
             if framecount % save_image_per_n_milliseconds == 0 :
@@ -187,6 +187,11 @@ def flow (videoPath, trackerType, labelName, savefolder, waitingTime) :
                 bboxobjects[i].__init__(p1, p2, labelName)
                 filedata.setObject(bboxobjects[i])
 
+            cv2.rectangle(frame,
+                          (p1[0]-7,p1[1]-7),
+                          (p2[0]+7,p2[1]+7),
+                          colors[i], 1, 1)
+
         # show frame
         cv2.imshow('MultiTracker', frame)
         outconfig.write(frame)
@@ -194,6 +199,7 @@ def flow (videoPath, trackerType, labelName, savefolder, waitingTime) :
         # -ms 로 지정한 만큼마다, 그 프레임의 데이터와 사진을 저장함.
         if framecount % save_image_per_n_milliseconds == 0 :
             filedata.writeAndSave(originalframe)
+            framecount = 0 # int 자료형 overflow 방지
 
         # quit on ESC button
         if cv2.waitKey(1) & 0xFF == 27:  # Esc pressed

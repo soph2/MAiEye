@@ -75,21 +75,38 @@ class FileData :
 
 
     def setObject(self, bboxobj) :
+        padding = 7
         obj = et.SubElement(self.root, "object")
         name = et.SubElement(obj, "name")
         name.text = bboxobj.name
 
+
         bbox = et.SubElement(obj, "bndbox")
         xmin = et.SubElement(bbox, "xmin")
-        xmin.text = str(bboxobj.xmin)
         ymin = et.SubElement(bbox, "ymin")
-        ymin.text = str(bboxobj.ymin)
+
         xmax = et.SubElement(bbox, "xmax")
-        xmax.text = str(bboxobj.xmax)
         ymax = et.SubElement(bbox, "ymax")
-        ymax.text = str(bboxobj.ymax)
 
+        if int(bboxobj.xmin) - padding <= 0 :
+            xmin.text = str(1)
+        else :
+            xmin.text = str(bboxobj.xmin - padding)
 
+        if int(bboxobj.ymin) - padding <= 0 :
+            ymin.text = str(1)
+        else :
+            ymin.text = str(bboxobj.ymin - padding)
+
+        if int(bboxobj.xmax) + padding >= int(self.width.text) :
+            xmax.text = str(self.width)
+        else :
+            xmax.text = str(bboxobj.xmax + padding)
+
+        if int(bboxobj.ymax) + padding >= int(self.height.text) :
+            ymax.text = str(self.height)
+        else :
+            ymax.text = str(bboxobj.ymax + padding)
 
 
 '''

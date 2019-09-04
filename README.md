@@ -15,6 +15,37 @@ and <br>
 
 
 <br>
+
+
+![1](./Image/1_1.png)
+
+<br>
+<br>
+
+
+![1](./Image/1_2.png)
+
+
+
+<br>
+<br>
+
+
+![1](./Image/2_1.png)
+![1](./Image/2_2.png)
+
+
+## Folder - Project
+
+ - 프로젝트 폴더입니다.
+ 
+| Title | Subject | Original Source & reference | 이용목적 | 관계 |
+|-------|:-------:|:----------------------------|:--------:|:----:|
+| Darkflow | | | Yolo Model | 1. tiny yolo maple Model 의 Trained Weight 가 저장되어 있음.<br>|
+| JanghooModule| MapCapture | | | |
+| | RoIExtraction | | | |
+| | RunWithMapleGUI | | | |
+
 <br>
 <br>
 
@@ -90,18 +121,6 @@ and <br>
 <br>
 <br>
 
-
-## Folder - Project
-
- - 프로젝트 폴더입니다.
- 
-| Title | Subject | Original Source | 이용목적 |
-|---|:---:|:---|:---:|
-|  WzComparerR2 |  MapleStory Source Crawler  |    | 몬스터와 지형 등의 이미지값을 읽어오기 위해 사용 |
-| MapleSourceFileEditor.inpynb | MapleStory Source file editor | 직접 제작 | 하나의 디렉토리로 이름을 변경하고 모아주기 위해 사용 |
-
-
-
 <br>
 
 ## Process and Issues...
@@ -173,3 +192,16 @@ and <br>
 
 - 2019/8/27
 > - https://tykimos.github.io/2017/03/08/CNN_Getting_Started/
+
+
+
+- 2019/8/28
+> - 나와 완전히 똑같은 문제를 겪는 사람들. 작은 learning rate 을 이용해서 overfit 을 시도해 보아도 아예 수렴을 잘 안하기도 하고, 훈련 후에 bbox 를 아예 그려내지를 못함. https://github.com/thtrieu/darkflow/issues/80
+
+
+
+For example, I had changed the line annotations = glob.glob(str(annotations)+'*.xml') to annotations = glob.glob('*.xml') in the darkflow\utils\pascal_voc_clean_xml.py file. But I might have been mistaken about the format of the annotations directory and so might have passed the argument in incorrectly.
+
+
+@GioLomia When you first start training on custom data, you should overfit the network on a subset of images (3 - 5). keep training until you get perfect bounding boxes on those images with 0.9 confidence or greater. After that, begin training on the entire dataset.
+I had a similar issue and this fixed it for me.

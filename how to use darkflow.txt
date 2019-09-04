@@ -1,16 +1,60 @@
+//
+내가 내부 소스파일 바꿔놨으니, 작동하지 않으면
+darkflow/darkflow/net 의 __init__ 파일의 이름을 수정해줄것.
+즉, __init__.py
+
+
 //cfg setting
 cfg 파일을 setting 하다가 오류가 날 수 있음. 그냥 cfg 파일 parsing 과정에서 나오는 사소한 오류같은데, 오류가 나타나면 오류나는 부분의 문장을 잘 엔터쳐서 넘겨서 저장하고 다시 해 볼 것. 
 
 
 //학습
-C:\Users\user\Desktop\programming_PROJECTS\MAiEye\MAiEye\Project\darkflow>python flow --model cfg/yolo-voc-maple.cfg --dataset C:\Users\user\Desktop\programming_PROJECTS\MAiEye\Data\maplestory_image_and_annotation_source\image --annotation C:\Users\user\Desktop\programming_PROJECTS\MAiEye\Data\maplestory_image_and_annotation_source\annotation --trainer adam --train --lr 0.001 --epoch 100 --batch 4 --save 100
+C:\Users\user\Desktop\programming_PROJECTS\MAiEye\MAiEye\Project\darkflow>python flow --model cfg/yolo-voc-maple.cfg --dataset C:\Users\user\Desktop\programming_PROJECTS\MAiEye\Data\maplestory_image_and_annotation_source\image --annotation C:\Users\user\Desktop\programming_PROJECTS\MAiEye\Data\maplestory_image_and_annotation_source\annotation --trainer adam --train --lr 0.001 --epoch 100 --batch 4 --save 100 --load -1
+
+--model : cfg 파일 선택
+--dataset : 데이터셋 경로
+--annotation : 레이블 경로
+--lr : learning rate
+...
+
+
+//이거 되긴 하는거야?!!! 이상해서 한번 레이블 하나만 가지고 다시 해보기로.
+C:\Users\user\Desktop\programming_PROJECTS\MAiEye\MAiEye\Project\darkflow>python flow --model cfg/tiny-yolo-maple.cfg --dataset C:\Users\user\Desktop\programming_PROJECTS\MAiEye\Data\maplestory_image_and_annotation_source\cleandata_oneclass_image --annotation C:\Users\user\Desktop\programming_PROJECTS\MAiEye\Data\maplestory_image_and_annotation_source\cleandata_oneclass_annotation --trainer adam --train --lr 0.001 --epoch 30 --save 100 --load 980
+//ㅅㅂ제발좀돼라 detecting 시작
+python flow --pbLoad built_graph/tiny-yolo-maple.pb --metaLoad built_graph/tiny-yolo-maple.meta --imgdir C:\Users\user\Desktop\programming_PROJECTS\MAiEye\Data\test_mob
+
+
+
+
+//3 class overfitting trial
+C:\Users\user\Desktop\programming_PROJECTS\MAiEye\MAiEye\Project\darkflow>python flow --model cfg/yolo-voc-3c-maple.cfg --dataset C:\Users\user\Desktop\programming_PROJECTS\MAiEye\Data\maplestory_image_and_annotation_source\threeclass_overfitting_trialimage --annotation C:\Users\user\Desktop\programming_PROJECTS\MAiEye\Data\maplestory_image_and_annotation_source\threeclass_overfitting_trialannotation --trainer adam --train --lr 0.01 --epoch 30 --batch 16 --save 50 <--load -1>
+//detecting 시작
+python flow --pbLoad built_graph/yolo-voc-3c-maple.pb --metaLoad built_graph/yolo-voc-3c-maple.meta --imgdir C:\Users\user\Desktop\programming_PROJECTS\MAiEye\Data\test_mob_overfit --threshold 0.0001
 
 
 //pb저장
-python flow --model cfg/yolo-voc-maple.cfg --load 110 --savepb
+*class 1, kind of busut -> (bluebusut) : 
+python flow --model cfg/tiny-yolo-maple.cfg --load -1 --savepb
+*class 3, (bluebusut, greenbusut, orangebusut) overfit : 
+python flow --model cfg/tiny-yolo-3c-maple.cfg --load -1 --savepb
+*class 5, elinia, highest step : 
+python flow --model cfg/yolo-voc-maple.cfg --load -1 --savepb
+
 
 
 //detecting 시작
-python flow --pbLoad built_graph/yolo-voc-maple.pb --metaLoad built_graph/yolo-voc-maple.meta --imgdir C:\Users\user\Desktop\programming_PROJECTS\MAiEye\Data\test
+*class 1, kind of busut -> bluebusut : 
+python flow --pbLoad built_graph/tiny-yolo-maple.pb --metaLoad built_graph/tiny-yolo-maple.meta --imgdir C:\Users\user\Desktop\programming_PROJECTS\MAiEye\Data\test_mob_overfit  --threshold 0.0001
+*class 3, (bluebusut, greenbusut, orangebusut) overfit : 
+python flow --pbLoad built_graph/tiny-yolo-3c-maple.pb --metaLoad built_graph/tiny-yolo-3c-maple.meta --imgdir C:\Users\user\Desktop\programming_PROJECTS\MAiEye\Data\test_mob  --threshold 0.0001
+*class 5, elinia, highest step : 
+python flow --pbLoad built_graph/yolo-voc-maple.pb --metaLoad built_graph/yolo-voc-maple.meta --imgdir C:\Users\user\Desktop\programming_PROJECTS\MAiEye\Data\test_mob  --threshold 0.0001
 
 
+
+
+2018 08 29
+//환경 프로젝트 설정했음. 오류나면 롤백해야함.
+//File -> setting ->
+PyCharm 에서 소스 라이브러리가 인식되지 않을 때
+naistil tstory
