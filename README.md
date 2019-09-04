@@ -17,22 +17,28 @@ and <br>
 <br>
 
 
-![1](./Image/1_1.png)
+![1](./readmeImage/1_1.png)
 
 <br>
 <br>
 
 
-![1](./Image/1_2.png)
-
+![1](./readmeImage/1_2.png)
 
 
 <br>
 <br>
 
 
-![1](./Image/2_1.png)
-![1](./Image/2_2.png)
+![1](./readmeImage/1_3.png)
+
+
+<br>
+<br>
+
+
+![1](./readmeImage/2_1.png)
+![1](./readmeImage/2_2.png)
 
 
 ## Folder - Project
