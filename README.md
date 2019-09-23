@@ -57,7 +57,7 @@ and <br>
 <br>
 
 ```
-(base) C: [your own root] \MAiEye\Project> python startdatagenerator.py
+(base) C: [your own path] \MAiEye\Project> python startdatagenerator.py
 ```
 
 <br>
@@ -138,8 +138,12 @@ args = vars(ap.parse_args())
 
 ### 모듈만 단독적으로 사용하기
 
+```
+C: [your own path] \MAiEye\Project\JanghooModule_RoIExtraction> python roi_multi_tracking_in_video.py 
+-t CSRT -sp C: [your own path] -ms 5 -v C: [your own path]\[your own video name].mp4 --label stump
+```
 
-
+<br>
 
 ```python
     ap = argparse.ArgumentParser()
