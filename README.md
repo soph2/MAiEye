@@ -180,8 +180,8 @@ C: [your own path] \MAiEye\Project\JanghooModule_RoIExtraction> python roi_multi
 | Computer Vision | CV | ... | o | ? |
 | Django Tutorial | Web Server | Django Official Hompage | o | 20% |
 | 생활코딩 Database | Web Server | Opentutorials.org | x | 30% |
-| Rainforced Learning Zero to All | RL | Youtube (pf. Sung kim) | x | 40% |
-| 강화학습 기초 with 팡요랩 | RL | Youtube (pf. David Silver, with 팡요랩) | x | 10% | 
+| RL Zero to All | RL | Youtube (pf. Sung kim) | x | 40% |
+| 강화학습 기초 | RL | Youtube (pf. David Silver, with 팡요랩) | x | 10% |
 
 <br>
 
