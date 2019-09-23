@@ -127,7 +127,8 @@ args = vars(ap.parse_args())
 | -l | Need(아직 사용은 안됨) | Need | Need |
 | -t | x | Need | Need |
 | -ms | Need | Need | Need |
-| -sp | 
+| -sp | Need | Need | Need |
+| -is | Need | x | x |
 
 
 <br>
