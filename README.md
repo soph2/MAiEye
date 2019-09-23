@@ -41,32 +41,47 @@ and <br>
 ![1](./readmeImage/2_2.png)
 
 
-## How to Run? 
+## How to Run? (Windows Only)
 
 
-### for Windows
+### Command
 
 
+**우선 해당 경로로 이동해주세요.**
 
-(base) C: *[your root]* \MAiEye\Project> 
-python start.py 
 ```
+(base) C: [your own root] \MAiEye\Project> 
+python startdatagenerator.py
+```
+
+아차, 단순히 python startdatagenerator.py 로 실행시킨다고 바로 실행되는 것이 아닙니다. 추가적인 명령을 내려 주셔야 합니다.
+
+<br>
+
+**Argument Example**
+
+
+```
+python startdatagenerator.py
 --labeltype map
--v C:\Users\user\Desktop\programming_PROJECTS\MAiEye\Data\maplestory_video_source\perion\move
--sp C:\Users\user\Desktop\programming_PROJECTS\MAiEye\Data\maplestory_map_source\perion 
+-v C: [your own root] \perion\move
+-sp C: [your own root] \perion
 -ms 1
 --label perion
 --imagesize 80
 ```
 
 
+우선 아래의 파이썬 코드를 보고, 하나씩 속성을 살펴보도록 하겠습니다.
+
+
 ```python
 
 ap = argparse.ArgumentParser()
-ap.add_argument("-s", "--labeltype", type=str, help="[string] : type of video. Is it map of mob?")
 ap.add_argument("-v", "--video", type=str, help="[string] : path to input video file")
-ap.add_argument("-t", "--tracker", type=str, help="[string] : BOOSTING, MIL, KCF, TLD, MEDIANFLOW, GOTURN, MOSSE, CSRT")
+ap.add_argument("-s", "--labeltype", type=str, help="[string] : type of video. Is it map of mob?")
 ap.add_argument("-l", "--label", type=str, help="[string] : label name")
+ap.add_argument("-t", "--tracker", type=str, help="[string] : BOOSTING, MIL, KCF, TLD, MEDIANFLOW, GOTURN, MOSSE, CSRT")
 ap.add_argument("-ms", "--milliseconds", type=int, help="[int] : save image per n milliseconds")
 ap.add_argument("-sp", "--savepath", type=str, help="[string] : saving path (absolute path , 절대경로), 경로가 존재하지 않으면 저장되지 않을 수 있어요!")
 ap.add_argument("-is", "--imagesize", type=int, help="[int] : map 옵션 을 선택할 때에만 지정. N * N 으로 사진이 저장됨")
@@ -74,8 +89,26 @@ args = vars(ap.parse_args())
 
 ```
 
+1. -v : Source 가 될 video file 의 절대 경로를 지정합니다. 제가 상대경로 규칙을 잘 모르기도 하고, 모듈 외부에 있는 파일을 쉽게 불러오기 위하여 절대경로 규칙을 사용하여 지정해 주는 것을 권장합니다.
+
+2. -s : Label type 에 대한 속성입니다. 이 속성에 대하여 설명하기 위해 간단히 덧붙이자면, 이 프로젝트에서 Maplestory 의 마을 판단 은 Image Classification (이미지 분류) 기술을, 몬스터 식별 과 지형 식별 등의 경우에는 Object Detection (이미지 감지) 기술을 사용합니다. 만약 이 속성이 Map 으로 되어 있다면, 별도의 Annotation XML 파일을 생성하지 않습니다.
+
+3. -l : Label 에 대한 속성입니다. 이 속성은 -s 가 mob 또는 land 로 지정되어 있을 때 기능적으로 유의미하지만, 반드시 입력해 주어야 오류를 방지할 수 있습니다.
+
+4. -t : tracker 의 속성을 지정합니다. 이 속성은 -s 가 mob 또는 land 로 지정되어 있을 때에만 사용하면 됩니다. tracker 은 움직이는 영상에서도 메이플스토리에서 어떤 몬스터 또는 지형을 졸졸 따라다니면서 해당 영역을 지정해 줍니다. 이 tracker 은 고전적인 알고리즘들로 구성되어 있습니다. CSRT 가 기본적으로 사용됩니다.
+
+5. -ms : milli second 의 약자로, 동영상을 몇 밀리초마다 캡쳐를 해낼 것인지 지정합니다.
+
+6. -is : image size 의 약자로, 어느 크기로 영상을 캡쳐할지 지정합니다. 이 속성은 -s 가 map 일 때에만
 
 
+
+| -s type | -s : map | -s : mob | -s : land (아직 구현안됨) |
+|:-------:|:--------:|:--------:|:---------:|
+| **call module** | map capture module | RoI Extraction module | RoI Extraction module |
+| -v | Need | Need | Need |
+| -l | Need(아직 사용은 안됨) | Need | Need |
+| -t | x | Need | Need |
 
 
 
