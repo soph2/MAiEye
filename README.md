@@ -129,19 +129,6 @@ args = vars(ap.parse_args())
 
 
 <br>
-
-## Folder - Project
-
- - 프로젝트 폴더입니다.
- 
-| Title | Subject | Original Source & reference | 이용목적 | 관계 |
-|-------|:-------:|:----------------------------|:--------:|:----:|
-| Darkflow | | | Yolo Model | 1. tiny yolo maple Model 의 Trained Weight 가 저장되어 있음.<br>|
-| JanghooModule| MapCapture | | | |
-| | RoIExtraction | | | |
-| | RunWithMapleGUI | | | |
-
-<br>
 <br>
 
 
