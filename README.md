@@ -41,6 +41,37 @@ and <br>
 ![1](./readmeImage/2_2.png)
 
 
+## How to Run? 
+
+
+### for Windows
+
+(base) C: [your root] \MAiEye\Project>
+
+
+
+
+```python
+
+ap = argparse.ArgumentParser()
+ap.add_argument("-s", "--labeltype", type=str, help="[string] : type of video. Is it map of mob?")
+ap.add_argument("-v", "--video", type=str, help="[string] : path to input video file")
+ap.add_argument("-t", "--tracker", type=str, help="[string] : BOOSTING, MIL, KCF, TLD, MEDIANFLOW, GOTURN, MOSSE, CSRT")
+ap.add_argument("-l", "--label", type=str, help="[string] : label name")
+ap.add_argument("-ms", "--milliseconds", type=int, help="[int] : save image per n milliseconds")
+ap.add_argument("-sp", "--savepath", type=str, help="[string] : saving path (absolute path , 절대경로), 경로가 존재하지 않으면 저장되지 않을 수 있어요!")
+ap.add_argument("-is", "--imagesize", type=int, help="[int] : map 옵션 을 선택할 때에만 지정. N * N 으로 사진이 저장됨")
+args = vars(ap.parse_args())
+
+```
+
+
+
+
+
+
+
+
 ## Folder - Project
 
  - 프로젝트 폴더입니다.
