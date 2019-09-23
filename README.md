@@ -65,8 +65,6 @@ python startdatagenerator.py
 
 **Argument Example**
 
-<br>
-
 ```
 python startdatagenerator.py
 --labeltype map
@@ -100,8 +98,6 @@ args = vars(ap.parse_args())
 <br>
 
 **Arguments**
-
-<br>
 
 1. -v : Source 가 될 video file 의 절대 경로를 지정합니다. 제가 상대경로 규칙을 잘 모르기도 하고, 모듈 외부에 있는 파일을 쉽게 불러오기 위하여 절대경로 규칙을 사용하여 지정해 주는 것을 권장합니다.
 
