@@ -42,7 +42,6 @@ and <br>
 
 <br>
 <br>
-<br>
 
 ## How to Run? (Windows Only)
 
