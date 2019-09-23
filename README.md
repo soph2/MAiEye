@@ -50,7 +50,9 @@ and <br>
 
 <br>
 
-**우선 해당 경로로 이동해주세요.**
+**Start Argument**
+
+커맨드 실행창을 키고, 해당 모듈이 있는 경로로 이동해주세요. git 저장소에서 다운로드받았다면, MAiEye\Project 폴더 안에 있을 겁니다.
 
 <br>
 
@@ -60,7 +62,7 @@ and <br>
 
 <br>
 
-아차, 단순히 python startdatagenerator.py 로 실행시킨다고 바로 실행되는 것이 아닙니다. 추가적인 명령을 내려 주셔야 합니다.
+아차, 단순히 python startdatagenerator.py 로 실행시킨다고 바로 뚝딱뚝딱 실행되는 것이 아니고, 추가적인 명령을 내려 주셔야 합니다. 아래에서 천천히 알아보도록 해요.
 
 <br>
 
@@ -78,7 +80,7 @@ python startdatagenerator.py
 
 <br>
 
-우선 아래의 파이썬 코드를 보고, 하나씩 속성을 살펴보도록 하겠습니다.
+우선 아래는 실제로 모듈 안에 작성된 python 코드입니다. 하나씩 속성을 살펴보도록 하겠습니다.
 
 <br>
 
@@ -110,9 +112,9 @@ args = vars(ap.parse_args())
 
 5. -ms : milli second 의 약자로, 동영상을 몇 밀리초마다 캡쳐를 해낼 것인지 지정합니다.
 
-6. -is : image size 의 약자로, 어느 크기로 영상을 캡쳐할지 지정합니다. 이 속성은 -s 가 map 일 때에만
+6. -is : image size 의 약자로, 어느 크기로 영상을 캡쳐할지 지정합니다. 이 속성은 -s 가 map 일 때에만 지정해 주면 됩니다. mob 이나 land 와 같은 경우, object detection model 들 중 yolo 모델을 통과합니다. 즉, yolo 모델에서 권장하는 size 가 있는 것 같다는 판단 하에 위 입력과 상관없이 고정된 크기로 잘라내기 때문입니다.
 
-7. 
+7. -sp : saving path 의 약자로, 동영상을 저장할 위치를 의미합니다.
 
 <br>
 
@@ -124,6 +126,9 @@ args = vars(ap.parse_args())
 | -v | Need | Need | Need |
 | -l | Need(아직 사용은 안됨) | Need | Need |
 | -t | x | Need | Need |
+| -ms | Need | Need | Need |
+| -sp | 
+
 
 <br>
 
@@ -131,6 +136,24 @@ args = vars(ap.parse_args())
 <br>
 <br>
 
+### 모듈만 단독적으로 사용하기
+
+
+
+
+```python
+    ap = argparse.ArgumentParser()
+    ap.add_argument("-v", "--video", type=str, help="[string] : path to input video file")
+    ap.add_argument("-t", "--tracker", type=str,
+                    help="[string] : BOOSTING, MIL, KCF, TLD, MEDIANFLOW, GOTURN, MOSSE, CSRT")
+    ap.add_argument("-l", "--label", type=str, help="[string] : label name")
+    ap.add_argument("-ms", "--milliseconds", type=int, help="[int] : save image per n milliseconds")
+    ap.add_argument("-sp", "--savepath", type=str, help="[string] : saving path (absolute path , 절대경로)")
+    args = vars(ap.parse_args())
+```
+
+<br>
+<br>
 
 ## Folder - Study
 
