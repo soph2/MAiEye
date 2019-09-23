@@ -175,13 +175,15 @@ C: [your own path] \MAiEye\Project\JanghooModule_RoIExtraction> python roi_multi
 |---|:---:|:---|:---:|:---:|
 | Basics of Data Analysis | ML | School / Sejong Univ (pf. Jaewook Song) | x | 100% |
 | Deep Leraning Zero to All 1 | AI | Youtube (pf. Sung kim) | x | 100% |
-| 양재 AI School Summer Camp | AI | Yangjae | o | ? |
+| 양재 AI School Summer Camp | AI | Yangjae | o | 이수 |
 | CS231N | CV | Youtube / Stanford Univ (pf. Fei-Fei Li) | o | 20% |
 | Computer Vision | CV | ... | o | ? |
 | Django Tutorial | Web Server | Django Official Hompage | o | 20% |
 | 생활코딩 Database | Web Server | Opentutorials.org | x | 30% |
 | RL Zero to All | RL | Youtube (pf. Sung kim) | x | 40% |
 | 강화학습 기초 | RL | Youtube (pf. David Silver, with 팡요랩) | x | 10% |
+
+**다양한 CV 모델들과 RL 이론을 이해하기 위하여, 대학에서 수학공부와 알고리즘 공부를 하고 있습니다.**
 
 <br>
 
