@@ -265,10 +265,12 @@ C: [your own path] \MAiEye\Project\JanghooModule_RoIExtraction> python roi_multi
 > - 구글링 결과 https://github.com/thtrieu/darkflow/issues/265 에서 지적한 것처럼, filename 이라는 노드에 확장자가 같이 들어가 있는 경우 나와 같은 오류가 발생한다는 것을 발견함. 하지만 나는 해당 사항이 아니었음. 그리고 https://github.com/thtrieu/darkflow/commit/80f5798d7dcce94969577b585cd26aa0f0c74602 를 찾음.
 > - 하지만 나의 이슈는 그것이 아니었고, 오히려 소스 내 path 의 형식에 확장자를 잘 붙여 주어야 한다는 것을 알게 됨. linux 기반의 프로그램을 윈도우에서 돌리다 보니 발생한 문져였던 것 같음. python 에서 os.join() 함수는 예를 들어 "\" 를 사용하는데 윈도우에서는 "/" 를 사용하는.. 이런 문제와, linux 에서는 .확장자 를 명명하지 않아도 되는데 windows 터미널에서는 .확장자 를 명명해야 한다는.
 
+<br>
 
 - 2019/8/16
 > - 하루종일 학습 돌렸는데 안 끝남. 동아리 2박 3일
 
+<br>
 
 - 2019/8/19
 > - CNN 학습에 대한 조교님의 조언을 들음. "CNN 은 특징을 추출하는데, 배경이 모두 같은 색상이면, 배경 색을 기준으로 CNN이 학습해 버린다. 그러다가 어떠한 형체가 나타나면 그 물체로 인식하는 것.. 이러한 방식으로 학습되어 버린다." 따라서, RoI 에 대한 시도가 필수적임을 알게 됨.
@@ -279,19 +281,24 @@ C: [your own path] \MAiEye\Project\JanghooModule_RoIExtraction> python roi_multi
 > - multi-roi box 그리기 코드 확인
 > - 2차점검 PPT 준비
 
+<br>
+
 - 2019/8/20
 > - multi-roi box 를 다양한 알고리즘으로 그려보고 성능 평가해서 가장 괜찮은 것 채택
 > - multi-roi box 를 그리고, 그 좌표들을 모두 따서 xml 파일로 만드는 코드 구현0
 
+<br>
 
 - 2019/8/22
 > - 이력서 준비
 
+<br>
 
 - 2019/8/23
 > - 깃허브 저장소 증발.. 새로운 저장소 만들기
 > - python BBox 정보를 저장할 클래스 생성 - 참고 : https://codeday.me/ko/qa/20190604/710379.html
-> - 
+
+<br>
 
 - 2019/8/24
 > - 클래스에 데이터 삽입, 파일로 추출하는 함수 완성
@@ -299,6 +306,8 @@ C: [your own path] \MAiEye\Project\JanghooModule_RoIExtraction> python roi_multi
 > - colab 에서 구현하기 성공시킬 것. - 참고 : https://blog.nerdfactory.ai/2019/04/25/learn-bert-with-colab.html
 > - 이력서 작성
 > - 100 에폭 돌려놓고 취침
+
+<br>
 
 - 2019/8/25
 > - image detection 모델 : 50에폭정도로 한번 test 해봤는데 전혀 검출을 못해냄. 정확도 0%
@@ -311,10 +320,12 @@ C: [your own path] \MAiEye\Project\JanghooModule_RoIExtraction> python roi_multi
 > - classification 모델 조사해보니 죄다 CiFar-10 데이터셋을 사용하는데, 그 데이터셋을 바꾸는 방법을 도저히 모르겠음.
 > - 구글링 결과 비슷한 아픔을 느낀 사람 발견 https://github.com/hohoins/ml/tree/master/ImageBinaryGenerator
 
+<br>
+
 - 2019/8/27
 > - https://tykimos.github.io/2017/03/08/CNN_Getting_Started/
 
-
+<br>
 
 - 2019/8/28
 > - 나와 완전히 똑같은 문제를 겪는 사람들. 작은 learning rate 을 이용해서 overfit 을 시도해 보아도 아예 수렴을 잘 안하기도 하고, 훈련 후에 bbox 를 아예 그려내지를 못함. https://github.com/thtrieu/darkflow/issues/80
@@ -331,3 +342,4 @@ I had a similar issue and this fixed it for me.
 - 2019/9/18
 > - 결과물 만들어내는 데 급급해서 겨우겨우 완성을 시키고 발표를 마친 지 거의 한 달, 개강해서 대학공부 하느라 반쯤 손을 놓고 있었는데, 최종 발표 준비하고 소스코드 제출하라고 메일 받고 부랴부랴 모듈화 손보는 중.
 
+<br>
