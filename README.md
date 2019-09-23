@@ -162,8 +162,10 @@ C: [your own path] \MAiEye\Project\JanghooModule_RoIExtraction> python roi_multi
 ### 첨언
 
 - 왜 굳이 모듈화?
-> 아타리게임의 강화학습은 비전 정보를 기반으로 하였습니다. 그렇다면, 우리가 두 눈으로 보는 정보를 디지털로 바꾸어 주는 CV 중간 매개체가 있어야 하지 않을까 하는 생각이 들었습니다. 다양한 강화학습을 시도해보기 위해, 비전 데이터셋을 모으는 것은 정말 힘든 일입니다. 하지만 우리는 게임 환경에서, 동영상이라는 좋은 비전 데이터가 존재합니다. <br> 모듈화가 되어있지 않다면, 이것은 MAiEye 프로젝트 안에서 호출되어야만 합니다. 하지만 저는 이것이 메이플스토리에만 쓰이길 바라지는 않습니다. 대부분정말 쉬운 코드이고, 한정적인 상황에서만 사용 가능하며, 누구나 만들 수 있는 모듈이긴 하지만 조금이라도 개발 시간이 단축된다면 기쁠 것 같습니다.
+> 이 프로젝트의 최종 목표는 강화학습입니다. 아타리게임의 강화학습은 비전 정보를 기반으로 하였습니다. 이에 영감을 얻어, 우리가 두 눈으로 보는 정보를 디지털로 바꾸어 주는 중간다리 역할을 할 프로그램이 있어야 하지 않을까 하는 생각이 들었습니다. 다양한 강화학습을 시도해보기 위해, 비전 데이터셋을 모으는 것은 정말 힘든 일입니다. 하지만 우리는 게임 환경에서, 동영상이라는 좋은 비전 데이터가 존재합니다. <br> 모듈화가 되어있지 않다면, 이것은 MAiEye 프로젝트 안에서 호출되어야만 합니다. 하지만 저는 이것이 메이플스토리에만 쓰이길 바라지는 않습니다. 대부분정말 쉬운 코드이고, 한정적인 상황에서만 사용 가능하며, 누구나 만들 수 있는 모듈이긴 하지만 조금이라도 개발 시간이 단축된다면 기쁠 것 같습니다.
 
+<br>
+<br>
 
 ## Folder - Study
 
@@ -178,6 +180,8 @@ C: [your own path] \MAiEye\Project\JanghooModule_RoIExtraction> python roi_multi
 | Computer Vision | CV | ... | o | ? |
 | Django Tutorial | Web Server | Django Official Hompage | o | 20% |
 | 생활코딩 Database | Web Server | Opentutorials.org | x | 30% |
+| Rainforced Learning Zero to All | RL | Youtube (pf. Sung kim) | x | 40% |
+| 강화학습 기초 with 팡요랩 | RL | Youtube (pf. David Silver, with 팡요랩) | x | 10% | 
 
 <br>
 
