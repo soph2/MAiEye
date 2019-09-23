@@ -123,8 +123,8 @@ args = vars(ap.parse_args())
 | -s type | -s : map | -s : mob | -s : land (아직 구현안됨) |
 |:-------:|:--------:|:--------:|:---------:|
 | **call module** | map capture module | RoI Extraction module | RoI Extraction module |
-| -v | Need(경로) | Need(영상지정) | Need(영상지정) |
-| -l | Need(아직 사용은 안됨) | Need | Need |
+| -v | Need(경로지정) | Need(영상지정) | Need(영상지정) |
+| -l | Need(아직 활용은 안됨) | Need | Need |
 | -t | x | Need | Need |
 | -ms | Need | Need | Need |
 | -sp | Need | Need | Need |
