@@ -46,13 +46,18 @@ and <br>
 
 ### Command
 
+<br>
 
 **우선 해당 경로로 이동해주세요.**
+
+<br>
 
 ```
 (base) C: [your own root] \MAiEye\Project> 
 python startdatagenerator.py
 ```
+
+<br>
 
 아차, 단순히 python startdatagenerator.py 로 실행시킨다고 바로 실행되는 것이 아닙니다. 추가적인 명령을 내려 주셔야 합니다.
 
@@ -60,6 +65,7 @@ python startdatagenerator.py
 
 **Argument Example**
 
+<br>
 
 ```
 python startdatagenerator.py
@@ -71,9 +77,11 @@ python startdatagenerator.py
 --imagesize 80
 ```
 
+<br>
 
 우선 아래의 파이썬 코드를 보고, 하나씩 속성을 살펴보도록 하겠습니다.
 
+<br>
 
 ```python
 
@@ -89,6 +97,12 @@ args = vars(ap.parse_args())
 
 ```
 
+<br>
+
+**Arguments**
+
+<br>
+
 1. -v : Source 가 될 video file 의 절대 경로를 지정합니다. 제가 상대경로 규칙을 잘 모르기도 하고, 모듈 외부에 있는 파일을 쉽게 불러오기 위하여 절대경로 규칙을 사용하여 지정해 주는 것을 권장합니다.
 
 2. -s : Label type 에 대한 속성입니다. 이 속성에 대하여 설명하기 위해 간단히 덧붙이자면, 이 프로젝트에서 Maplestory 의 마을 판단 은 Image Classification (이미지 분류) 기술을, 몬스터 식별 과 지형 식별 등의 경우에는 Object Detection (이미지 감지) 기술을 사용합니다. 만약 이 속성이 Map 으로 되어 있다면, 별도의 Annotation XML 파일을 생성하지 않습니다.
@@ -101,7 +115,11 @@ args = vars(ap.parse_args())
 
 6. -is : image size 의 약자로, 어느 크기로 영상을 캡쳐할지 지정합니다. 이 속성은 -s 가 map 일 때에만
 
+<br>
 
+**Arguments Summary**
+
+<br>
 
 | -s type | -s : map | -s : mob | -s : land (아직 구현안됨) |
 |:-------:|:--------:|:--------:|:---------:|
@@ -110,9 +128,10 @@ args = vars(ap.parse_args())
 | -l | Need(아직 사용은 안됨) | Need | Need |
 | -t | x | Need | Need |
 
+<br>
 
 
-
+<br>
 
 ## Folder - Project
 
