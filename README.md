@@ -190,11 +190,6 @@ C: [your own path] \MAiEye\Project\JanghooModule_RoIExtraction> python roi_multi
 ### CS231N Source
 
 
-- Youtube : 'CS231N official spring 2017'
-> 1. https://youtu.be/vT1JzLTH4G4
-
-- Blog : 'CS231N 강의노트 한글번역 project'
-> 1. http://aikorea.org/cs231n/
 
 <br>
 
@@ -237,6 +232,10 @@ C: [your own path] \MAiEye\Project\JanghooModule_RoIExtraction> python roi_multi
 - 기타
 > 1. 김태영 블로그 : https://tykimos.github.io/2017/03/25/Fit_Talk/
 > 2. 김태영 블로그, 컨볼루션 신경망 모델 만들어보기 : https://tykimos.github.io/2017/03/08/CNN_Getting_Started/
+
+- 나중에 참고할 만한 자료
+> 1. Youtube, 'CS231N official spring 2017' : https://youtu.be/vT1JzLTH4G4
+> 2. Blog, 'CS231N 강의노트 한글번역 project' : http://aikorea.org/cs231n/
 
 
 <br>
