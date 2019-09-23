@@ -320,9 +320,14 @@ C: [your own path] \MAiEye\Project\JanghooModule_RoIExtraction> python roi_multi
 > - 나와 완전히 똑같은 문제를 겪는 사람들. 작은 learning rate 을 이용해서 overfit 을 시도해 보아도 아예 수렴을 잘 안하기도 하고, 훈련 후에 bbox 를 아예 그려내지를 못함. https://github.com/thtrieu/darkflow/issues/80
 
 
-
 For example, I had changed the line annotations = glob.glob(str(annotations)+'*.xml') to annotations = glob.glob('*.xml') in the darkflow\utils\pascal_voc_clean_xml.py file. But I might have been mistaken about the format of the annotations directory and so might have passed the argument in incorrectly.
 
 
 @GioLomia When you first start training on custom data, you should overfit the network on a subset of images (3 - 5). keep training until you get perfect bounding boxes on those images with 0.9 confidence or greater. After that, begin training on the entire dataset.
 I had a similar issue and this fixed it for me.
+
+<br>
+
+- 2019/9/18
+> - 결과물 만들어내는 데 급급해서 겨우겨우 완성을 시키고 손을 놓고 있었는데, 최종 발표 준비하고 소스코드 제출하라고 메일 받고 부랴부랴 모듈화 손보는 중.
+
