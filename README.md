@@ -46,9 +46,18 @@ and <br>
 
 ### for Windows
 
-(base) C: [your root] \MAiEye\Project>
 
 
+(base) C: *[your root]* \MAiEye\Project> 
+python start.py 
+```
+--labeltype map
+-v C:\Users\user\Desktop\programming_PROJECTS\MAiEye\Data\maplestory_video_source\perion\move
+-sp C:\Users\user\Desktop\programming_PROJECTS\MAiEye\Data\maplestory_map_source\perion 
+-ms 1
+--label perion
+--imagesize 80
+```
 
 
 ```python
