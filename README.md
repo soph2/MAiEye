@@ -55,8 +55,7 @@ and <br>
 <br>
 
 ```
-(base) C: [your own root] \MAiEye\Project> 
-python startdatagenerator.py
+(base) C: [your own root] \MAiEye\Project> python startdatagenerator.py
 ```
 
 <br>
