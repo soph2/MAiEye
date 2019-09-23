@@ -186,15 +186,10 @@ C: [your own path] \MAiEye\Project\JanghooModule_RoIExtraction> python roi_multi
 
 **다양한 CV 모델들과 RL 이론을 이해하기 위하여, 대학에서 수학공부와 알고리즘 공부를 하고 있습니다.**
 
-<br>
-
-### CS231N Source
-
-
 
 <br>
 
-### Computer Vision Source
+### Computer Vision Study Source
 
 
 - **image detection, segmentation 모델에 대한 개념은 아래 내용을 참고했다.**
@@ -241,22 +236,28 @@ C: [your own path] \MAiEye\Project\JanghooModule_RoIExtraction> python roi_multi
 
 <br>
 <br>
-
 <br>
 
 ## Process and Issues...
 
 - 정말 깜깜이로 주섬주섬
+
+<br>
+
 - 2019/8/13
 > - 일단 darkflow 의 demo 를 돌려 봄. 작동은 한다는 것을 확인함. 하지만 성능이 굉장히 좋지 않음. 좀 불안함.
 > - 메이플스토리 소스 파일들 다 꺼내서 하나의 폴더로 이름 정리해서 모으고 폴더 정리했음.
 > - 2007 파스칼 데이터셋 형식에 맞춰서 tiny yolo 에 들어갈 xml 파일을 위한 annotating 프로그램 제작 중.
 > - tiny yolo 가 내가 학습시킨 데이터셋에서 작동하지 않을 시, normal yolo v3 을 시도해야 하는데, darkflow 에서는 실행이 안돼서 darknet for window source 를 찾음.
 
+<br>
+
 - 2019/8/14
 > - xml 파일 완성해서 학습 버튼 누르는것. 데이터셋에 들어있는 몬스터가 존재하는 맵에 가서 스크린샷 detect 돌려보고 안되면 tiny yolo 버리고 다른 것으로 갈아타기 위해 새로운 annotating 프로그램 만들어 학습 버튼 누르는 것이 (xml 또는 json 형식이겠지..) 오늘의 목표.
 > - 속도 느리면 피시방 가거나 최유경교수님 연구실 찾아가거나.. 학교 컴퓨터에 몰래 돌려놓고 나와야지
 > - 하지만 목표 달성 실패, parsing 하고 이런저런 오류 잡다가 끝남.
+
+<br>
 
 - 2019/8/15
 > - 일단 오류 하나 잡음. 소스를 까보니, pascal voc 형식도 조금씩 다 성격이 달랐다는 걸 알게 되었음.
@@ -267,7 +268,6 @@ C: [your own path] \MAiEye\Project\JanghooModule_RoIExtraction> python roi_multi
 
 - 2019/8/16
 > - 하루종일 학습 돌렸는데 안 끝남. 동아리 2박 3일
-> - 
 
 
 - 2019/8/19
