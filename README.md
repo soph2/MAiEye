@@ -10,7 +10,7 @@ and <br>
 
 <br>
 
-이 프로젝트는 https://github.com/yangjae-ai-school/Individual-Project 에서 옮겨진 것으로, <br>
+이 프로젝트는 https://github.com/yangjae-ai-school/Individual-Project (현재는 폐쇄됨) 에서 옮겨진 것으로, <br>
 저장소가 완전히 꼬여 고장나버렸기 때문에 부득이 이사하게 되었음을 알립니다. <br>
 
 
