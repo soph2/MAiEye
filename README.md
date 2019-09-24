@@ -139,6 +139,8 @@ args = vars(ap.parse_args())
 
 ### 모듈만 단독적으로 사용하기
 
+<br>
+
 관심영역 추출 모듈 단독으로 사용하기
 
 ```
@@ -147,12 +149,14 @@ C: [your own path] \MAiEye\Project\JanghooModule_RoIExtraction> python roi_multi
 ```
 
 <br>
+<br>
 
 동영상화면 캡쳐 모듈 단독으로 사용하기
 
 ```
-C:  [your own path] \MAiEye\Project\JanghooModule_MapCapture> python capture_map.py 
--sp C: [your own path] --labeltype map -ms 2 -v C:[your own path]\[your own video name or folder] --label henesis --imagesize 80
+C: [your own path] \MAiEye\Project\JanghooModule_MapCapture> python capture_map.py 
+-sp C: [your own path] -v C:[your own path]\[your own video name or folder]  
+--label henesis --imagesize 80 --labeltype map -ms 2
 ```
 
 <br>
