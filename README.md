@@ -167,6 +167,23 @@ startclassificationmodeltraining.py
 <br>
 <br>
 
+**Before Final Starting**
+
+우선, darkflow 에서 제공하는 cython utils 이라는 것이 전역에 설치가 되어 있어야 합니다. <br>
+
+https://github.com/thtrieu/darkflow/archive/master.zip 다운로드 하고 압축풀기를 합니다. <br>
+
+```
+(base) C: [your own path] \darkflow-master> pip install -e .
+```
+
+<br>
+
+이제 준비를 마쳤습니다!
+
+<br>
+<br>
+
 **Run Final Model!**
 
 아직 모듈화가 이루어지지 않았습니다. <br>
