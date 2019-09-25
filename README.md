@@ -106,7 +106,7 @@ args = vars(ap.parse_args())
 
 2. -s : Label type 에 대한 속성입니다. 이 속성에 대하여 설명하기 위해 간단히 덧붙이자면, 이 프로젝트에서 Maplestory 의 마을 판단 은 Image Classification (이미지 분류) 기술을, 몬스터 식별 과 지형 식별 등의 경우에는 Object Detection (이미지 감지) 기술을 사용합니다. 만약 이 속성이 Map 으로 되어 있다면, 별도의 Annotation XML 파일을 생성하지 않습니다.
 
-3. -l : Label 에 대한 속성입니다. -s 가 Map 일 때에는, -l 에 지정된 문자열로, savepath 내부에 경로를 만들고, 그 안에 이미지를 저장합니다.
+3. -l : Label 에 대한 속성입니다. -s 가 map 일 때에는, -l 에 지정된 문자열로, savepath 내부에 경로를 만들고, 그 안에 이미지를 저장합니다. 만약 -s 가 map 이고, -sp 가 C:/folder 이고, -l 이 example 이라면, C:/folder/example 에 이미지를 저장합니다. 이렇게 설계한 이유는 classification 모델들의 학습이 보통 이런 디렉토리 구조를 선호하기 때문입니다.
 
 4. -t : tracker 의 속성을 지정합니다. 이 속성은 -s 가 mob 또는 land 로 지정되어 있을 때에만 사용하면 됩니다. tracker 은 움직이는 영상에서도 메이플스토리에서 어떤 몬스터 또는 지형을 졸졸 따라다니면서 해당 영역을 지정해 줍니다. 이 tracker 은 고전적인 알고리즘들로 구성되어 있습니다. CSRT 가 기본적으로 사용됩니다.
 
