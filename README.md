@@ -50,8 +50,9 @@ and <br>
 
 <br>
 
-**Start Argument**
+**Start! data generator**
 
+data generator 은 매우 간단한 두 개의 모듈로 이루어져 있습니다. 첫째는 Multi-RoI(Region of Interest)Extraction 모듈 - Image Detection 모델에 사용되는 데이터를 모으는 역할의 모듈이고, 둘째는 MapCapture 모듈 - Image Classification 모델에 사용되는 데이터를 모으는 역할의 모듈입니다.<br>
 커맨드 실행창을 키고, 해당 모듈이 있는 경로로 이동해주세요. git 저장소에서 다운로드받았다면, MAiEye\Project 폴더 안에 있을 겁니다.
 
 <br>
@@ -132,7 +133,55 @@ args = vars(ap.parse_args())
 
 
 <br>
+<br>
 
+**Start! classification model trainig**
+
+아직 모듈화가 이루어지지 않았습니다.
+
+- 아직 학습이 중단되었을 때 다시 로드하는 것이 원활하지 않습니다.
+- 아직 Class 의 개수를 유동적으로 조절하지 못합니다.
+- 아직 label 을 기준으로 test, train, validation set 를 자동생성해내지 못합니다.
+- 추후에는 이 Classification 모델 학습을 모듈로 만들 예정입니다.
+- 아직 test, train, validation set 의 경로를 하드코딩해주어야 합니다.
+
+<br>
+
+아래 파일의 소스코드를 본인의 환경에 맞게 수정해 주세요. <br>
+startclassificationmodeltraining.py
+```python
+    train_directory = 'C: [your own path] /train'
+    valid_directory = 'C: [your own path] /valid'
+    test_directory  = 'C: [your own path] /test'
+    checkpoint_path = "trainingcheckpoint/cp.ckpt"
+```
+
+<br>
+
+실행명령은 다음과 같습니다.
+
+```
+(base) C: [your own path] \MAiEye\Project\JanghooModule_RunWithMapleGUI\Janghoo_Model> python startclassificationmodeltraining.py
+```
+
+<br>
+<br>
+
+**Run Final Model!**
+
+아직 모듈화가 이루어지지 않았습니다. <br>
+하지만 데모 버젼을 실행해 보는 것은 어렵지 않습니다. <br>
+
+
+- 아직 학습이 적절히 이루어지지 않았습니다.
+- Yolo 모델은 특정 유닛에 한해서 작동합니다.
+- argument 를 통한 조절이 불가능합니다.
+
+실행명령은 다음과 같습니다.
+
+```
+(base) C: [your own path] \MAiEye\Project> python runmodel.py
+```
 
 <br>
 <br>
