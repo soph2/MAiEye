@@ -177,12 +177,17 @@ startclassificationmodeltraining.py
 - Yolo 모델은 특정 유닛에 한해서 작동합니다.
 - argument 를 통한 조절이 불가능합니다.
 
+
+주의 : Github 용량 제한 때문에, 학습된 classification 모델 파일이 존재하지 않으므로, 사용 이전에 직접 제작해야 합니다. <br>
+학습시킨 모델 (.h5 파일) 은, 지정된 이름으로 \MAiEye\Project\JanghooModule_RunWithMapleGUI\Janghoo_Model] 에 넣어 주면 됩니다.
+
 실행명령은 다음과 같습니다.
 
 ```
 (base) C: [your own path] \MAiEye\Project> python runmodel.py
 ```
 
+<br>
 <br>
 <br>
 
@@ -229,6 +234,7 @@ C: [your own path] \MAiEye\Project\JanghooModule_MapCapture> python capture_map.
 - 왜 굳이 모듈화?
 > 이 프로젝트의 최종 목표는 강화학습입니다. 아타리게임의 강화학습은 비전 정보를 기반으로 하였습니다. 이에 영감을 얻어, 우리가 두 눈으로 보는 정보를 디지털로 바꾸어 주는 중간다리 역할을 할 프로그램이 있어야 하지 않을까 하는 생각이 들었습니다. 다양한 강화학습을 시도해보기 위해, 비전 데이터셋을 모으는 것은 정말 힘든 일입니다. 하지만 우리는 게임 환경에서, 동영상이라는 좋은 비전 데이터가 존재합니다. <br> 모듈화가 되어있지 않다면, 이것은 MAiEye 프로젝트 안에서 호출되어야만 합니다. 하지만 저는 이것이 메이플스토리에만 쓰이길 바라지는 않습니다. 대부분정말 쉬운 코드이고, 한정적인 상황에서만 사용 가능하며, 누구나 만들 수 있는 모듈이긴 하지만 조금이라도 개발 시간이 단축된다면 기쁠 것 같습니다.
 
+<br>
 <br>
 <br>
 
