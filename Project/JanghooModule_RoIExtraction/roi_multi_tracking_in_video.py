@@ -3,34 +3,27 @@ import cv2
 import os
 import numpy as np
 
+
 from random import randint
 import argparse
-from BBoxToDataset.CreateTracker import createTrackerByName
-
-
-#-------#
-#Parsing#
-#-------#
-ap = argparse.ArgumentParser()
-ap.add_argument("-v", "--video", type=str, help="[string] : path to input video file")
-ap.add_argument("-t", "--tracker", type=str, help="[string] : BOOSTING, MIL, KCF, TLD, MEDIANFLOW, GOTURN, MOSSE, CSRT")
-ap.add_argument("-l", "--label", type=str, help="[string] : label name")
-ap.add_argument("-ms", "--milliseconds", type=int, help="[int] : save image per n milliseconds")
-ap.add_argument("-sp", "--savepath", type=str, help="[string] : saving path (absolute path , 절대경로)")
-args = vars(ap.parse_args())
-# Set video to load
-videoPath = args["video"]
-# Specify the tracker type
-trackerType = args["tracker"]
-# and the others...
-labelName = args["label"]
-savefolder = args["savepath"]
-waitingTime = args["milliseconds"]
-
 
 
 
 def flow (videoPath, trackerType, labelName, savefolder, waitingTime) :
+
+    if __name__ == '__main__' :
+        print("\n\n\nrun module separately \n\n\n")
+        from BBoxToDataset.CreateTracker import createTrackerByName
+        from BBoxToDataset.BboxObject import BboxObject
+        from BBoxToDataset.BboxObject import FileData
+
+    else :
+        print("\n\n\ncalled by\n", __name__, "\n\n")
+        from .BBoxToDataset.CreateTracker import createTrackerByName
+        from .BBoxToDataset.BboxObject import BboxObject
+        from .BBoxToDataset.BboxObject import FileData
+
+
     # Create a video capture object to read videos
     cap = cv2.VideoCapture(videoPath)
 
@@ -42,6 +35,7 @@ def flow (videoPath, trackerType, labelName, savefolder, waitingTime) :
         print('Failed to read video')
         sys.exit(1)
 
+
     #namedWindow : string 이름을 가진 window 를 표시한다.
     #imshow : 특정 window 에 img 를 표시한다.
     cv2.namedWindow('Selecting RoI')
@@ -49,6 +43,7 @@ def flow (videoPath, trackerType, labelName, savefolder, waitingTime) :
     cv2.imshow('Selecting RoI', frame)
 
     print("size is : ", np.size(frame, 0), np.size(frame, 1))
+
     ## Select boxes
     bboxes = []
     colors = []
@@ -87,7 +82,6 @@ def flow (videoPath, trackerType, labelName, savefolder, waitingTime) :
         multiTracker.add(createTrackerByName(trackerType), frame, bbox)
 
 
-
     #----------------------------------------#
     #Show original boundingbox with Subwindow#
     #----------------------------------------#
@@ -122,7 +116,6 @@ def flow (videoPath, trackerType, labelName, savefolder, waitingTime) :
     #Imagefile and Annotatioin Saving Settings#
     #-----------------------------------------#
 
-    from BBoxToDataset.BboxObject import BboxObject
         # bbox object 객체들을 보관할것
         # bbox 가 4개라면 bbox 객체 4개를 만드는것
     bboxobjects = []
@@ -130,7 +123,6 @@ def flow (videoPath, trackerType, labelName, savefolder, waitingTime) :
         a = BboxObject((0,0), (0,0), labelName)
         bboxobjects.append(a)
 
-    from BBoxToDataset.BboxObject import FileData
     if not os.path.isdir(savefolder) :
         # save folder 이 존재하지 않는다면..
         os.makedirs(savefolder)
@@ -209,12 +201,32 @@ def flow (videoPath, trackerType, labelName, savefolder, waitingTime) :
 
 
 
-if os.path.isdir(videoPath) :
-    file_list = os.listdir(videoPath)
-    for filename in file_list :
-        newvideopath = os.path.join(videoPath, filename)
-        flow(newvideopath, trackerType, labelName, savefolder, waitingTime)
-else :
-    flow(videoPath, trackerType, labelName, savefolder, waitingTime)
-#reference https://www.learnopencv.com/multitracker-multiple-object-tracking-using-opencv-c-python/
+if __name__ == '__main__' :
+    #-------#
+    #Parsing#
+    #-------#
+    ap = argparse.ArgumentParser()
+    ap.add_argument("-v", "--video", type=str, help="[string] : path to input video file")
+    ap.add_argument("-t", "--tracker", type=str,
+                    help="[string] : BOOSTING, MIL, KCF, TLD, MEDIANFLOW, GOTURN, MOSSE, CSRT")
+    ap.add_argument("-l", "--label", type=str, help="[string] : label name")
+    ap.add_argument("-ms", "--milliseconds", type=int, help="[int] : save image per n milliseconds")
+    ap.add_argument("-sp", "--savepath", type=str, help="[string] : saving path (absolute path , 절대경로)")
+    args = vars(ap.parse_args())
+    # Set video to load
+    videoPath = args["video"]
+    # Specify the tracker type
+    trackerType = args["tracker"]
+    # and the others...
+    labelName = args["label"]
+    savefolder = args["savepath"]
+    waitingTime = args["milliseconds"]
 
+    if os.path.isdir(videoPath) :
+        file_list = os.listdir(videoPath)
+        for filename in file_list :
+            newvideopath = os.path.join(videoPath, filename)
+            flow(newvideopath, trackerType, labelName, savefolder, waitingTime)
+    else :
+        flow(videoPath, trackerType, labelName, savefolder, waitingTime)
+    #reference https://www.learnopencv.com/multitracker-multiple-object-tracking-using-opencv-c-python/

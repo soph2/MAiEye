@@ -1,5 +1,19 @@
-(base) C:\Users\user\Desktop\programming_PROJECTS\MAiEye\MAiEye\Project\JanghooModule_RoIExtraction>python roi_multi_tracking_in_video.py -t CSRT -sp C:\Users\user\Desktop\programming_PROJECTS\MAiEye\Data\maplestory_image_and_annotation_source -ms 5 -v C:\Users\user\Desktop\programming_PROJECTS\MAiEye\Data\maplestory_video_source\perion\stop\perion_mob1.mp4 --label stump
+//단독으로 실행
+(base) C:\Users\user\Desktop\programming_PROJECTS\MAiEye\MAiEye\Project\JanghooModule_RoIExtraction>
+
+//Example1
+python roi_multi_tracking_in_video.py -t CSRT -sp C:\Users\user\Desktop\programming_PROJECTS\MAiEye\Data\maplestory_image_and_annotation_source -ms 5 -v C:\Users\user\Desktop\programming_PROJECTS\MAiEye\Data\maplestory_video_source\perion\stop\perion_mob1.mp4 --label stump
 
 
+//Example2
 python roi_multi_tracking_in_video.py -t CSRT -sp C:\Users\user\Desktop\programming_PROJECTS\MAiEye\Data\map
 lestory_image_and_annotation_source -ms 3 -v C:\Users\user\Desktop\programming_PROJECTS\MAiEye\Data\maplestory_video_source\perion\stop\perion_mob5.mp4 --label stumpee
+
+
+
+
+//모듈로 실행
+(base) C:\Users\user\Desktop\programming_PROJECTS\MAiEye\MAiEye\Project>
+
+//Example1
+python startdatagenerator.py -s mob -t CSRT -sp C:\Users\user\Desktop\programming_PROJECTS\MAiEye\Data\maplestory_image_and_annotation_source -ms 3 -v C:\Users\user\Desktop\programming_PROJECTS\MAiEye\Data\maplestory_video_source\perion\stop\perion_mob5.mp4 --label stumpee

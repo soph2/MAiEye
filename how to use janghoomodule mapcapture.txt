@@ -1,19 +1,16 @@
-//페리온
+//모듈로 실행 시
 (base) C:\Users\user\Desktop\programming_PROJECTS\MAiEye\MAiEye\Project>
-python start.py -sp C:\Users\user\Desktop\programming_PROJECTS\MAiEye\Data\maplestory_map_source\perion --labeltype map -ms 1 -v C:\Users\user\Desktop\programming_PROJECTS\MAiEye\Data\maplestory_video_source\perion\move --label perion --imagesize 80
+
+//Example 페리온
+python startdatagenerator.py -sp C:\Users\user\Desktop\programming_PROJECTS\MAiEye\Data\maplestory_map_source --labeltype map -ms 1 -v C:\Users\user\Desktop\programming_PROJECTS\MAiEye\Data\maplestory_video_source\perion\move --label perion --imagesize 80
 
 
 
+//단독으로 실행 시
+(base) C:\Users\user\Desktop\programming_PROJECTS\MAiEye\MAiEye\Project\JanghooModule_MapCapture>
 
-//엘리니아
-(base) C:\Users\user\Desktop\programming_PROJECTS\MAiEye\MAiEye\Project>python start.py -sp C:\Users\user\Desktop\programming_PROJECTS\MAiEye\Data\maplestory_map_source\elinia --labeltype map -ms 2 -v C:\Use
-rs\user\Desktop\programming_PROJECTS\MAiEye\Data\maplestory_video_source\elinia\move --label elinia --imagesize 80
-
-
-//커닝시티
-(base) C:\Users\user\Desktop\programming_PROJECTS\MAiEye\MAiEye\Project>python start.py -sp C:\Users\user\Desktop\programming_PROJECTS\MAiEye\Data\maplestory_map_source\kerningcity --labeltype map -ms 1 -v C
-:\Users\user\Desktop\programming_PROJECTS\MAiEye\Data\maplestory_video_source\kerningcity\move --label kerningcity --imagesize 80
+//Example 페리온
+python capture_map.py -sp C:\Users\user\Desktop\programming_PROJECTS\MAiEye\Data\maplestory_map_source --labeltype map -ms 1 -v C:\Users\user\Desktop\programming_PROJECTS\MAiEye\Data\maplestory_video_source\perion\move --label perion --imagesize 80
 
 
-//Test
-(base) C:\Users\user\Desktop\programming_PROJECTS\MAiEye\MAiEye\Project>python start.py -sp C:\Users\user\Desktop\programming_PROJECTS\MAiEye\Data\test\henesis --labeltype map -ms 2 -v C:\Users\user\Desktop\programming_PROJECTS\MAiEye\Data\test_stop\henesis --label henesis --imagesize 80
+

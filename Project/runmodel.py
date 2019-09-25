@@ -7,6 +7,7 @@ from PIL import ImageGrab
 #------------------------------------#
 #Selection of RoI - maplestory select#
 #------------------------------------#
+
 screen_id = 0
 DIVIDE_CONSTANT = 2
 
