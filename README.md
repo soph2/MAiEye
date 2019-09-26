@@ -444,3 +444,5 @@ I had a similar issue and this fixed it for me.
 1. 모델 내부에 대한 보다 정량적인 이해를 위해 선형대수 공부 중.
 2. 오픈소스의 라이선스와 깃에 대한 이해도를 높이기 위해 오픈소스 수업 듣는 중.
 3. 동아리에서 RL / CV / GAN 스터디 할 예정.
+4. 파이썬 모듈을 만드는 약간의 틀이 있다는 것을 알게 됨. 이 형식에 걸맞게 재구성해볼 예정
+> https://python-guide-kr.readthedocs.io/ko/latest/writing/structure.html
