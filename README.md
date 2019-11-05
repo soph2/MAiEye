@@ -446,3 +446,7 @@ I had a similar issue and this fixed it for me.
 3. 동아리에서 RL / CV / GAN 스터디 할 예정.
 4. 파이썬 모듈을 만드는 약간의 틀이 있다는 것을 알게 됨. 이 형식에 걸맞게 재구성해볼 예정
 > https://python-guide-kr.readthedocs.io/ko/latest/writing/structure.html
+
+<br>
+
+##2019.11.05 오픈소스 팀원 참여
