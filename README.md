@@ -177,6 +177,13 @@ https://github.com/thtrieu/darkflow/archive/master.zip 다운로드 하고 압�
 (base) C: [your own path] \darkflow-master> pip install -e .
 ```
 
+만약, cv2라는 모듈이 없다면
+
+```
+(base) C: [your own path] \darkflow-master> pip install opencv-python
+```
+위 명령어를 사용하여 설치하셔야 합니다!
+
 <br>
 
 이제 준비를 마쳤습니다!
